@@ -22,32 +22,46 @@ namespace HW1_NLP.Screens
             LblDateTime.Text = DateTime.Now.ToString();
             LblFlag.Text = string.Empty;
         }
-
+        string zpContextTr=string.Empty;
+        string zpContextEn = string.Empty;
+        ZipfProcess zipfProcess1 = new ZipfProcess();
         private void FormMain_Load(object sender, EventArgs e)
         {
             try
             {
                 LblFlag.Text = "Belirtilen dosyalar okunmaktadır.";
-                            
-                string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-                string path = Path.Combine(dir, "ReadingFiles");
-                string file = "HarryPotter-FelsefeTaşı.pdf";
-                string FilePath = Path.Combine(path, file);
-                string selectedFileContent = PdfHelper.ExtractTextFromPdf(FilePath);
-                LblFlag.Text = "Okunan dosya : "+file;
-              
-                LblFlag.Text = file+"dosyası üzerinde kelime analizi başlatılmıştır";
 
-                ZipfProcess zipfProcess1 = new ZipfProcess();
-                PreparAndApplyZipfLaw(zipfProcess1,selectedFileContent);
-                PrepareandapplyZipfLawOnChart(zipfProcess1,ChartTr);
-                
+                zpContextTr =  ReadAndLoadFile("HarryPotter-FelsefeTaşı.pdf");
+                zpContextEn = ReadAndLoadFile("HarryPotterandtheSorcerer'sStone.pdf");
 
+                zipfProcess1 = new ZipfProcess();
+                PreparAndApplyZipfLaw(zipfProcess1, zpContextTr);
+                PrepareandapplyZipfLawOnChart(zipfProcess1, ChartTr);
+
+               
             }
             catch(Exception ex)
             {
 
             }
+        }
+        private string ReadAndLoadFile(string fname)
+        {
+
+
+            string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string path = Path.Combine(dir, "ReadingFiles");
+            string file = fname;
+            string FilePath = Path.Combine(path, file);
+            string selectedFileContentTr = PdfHelper.ExtractTextFromPdf(FilePath);
+
+
+            LblFlag.Text = "Okunan dosya : " + file;
+            LblFlag.Text = file + "dosyası üzerinde kelime analizi başlatılmıştır";
+
+           
+
+            return selectedFileContentTr;
         }
         private void PreparAndApplyZipfLaw(ZipfProcess _zp, string selectedFileContent)
         {
@@ -66,7 +80,7 @@ namespace HW1_NLP.Screens
         }
         private void PrepareandapplyZipfLawOnChart(ZipfProcess _zp,Chart _ch) {
             
-            var series = new Series("BİTEN PAKETLER");
+            var series = new Series("Kelimeler");
             
             for (int z = 0; z < _zp.WordsOfFile.Count(); z++)
             {
@@ -76,7 +90,8 @@ namespace HW1_NLP.Screens
             }
             _ch.Series.Add(series);
             _ch.Series[0].ChartType = SeriesChartType.Pie;
-            _ch.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            _ch.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+            _ch.ChartAreas[0].CursorX.AutoScroll = true;
         }
 
         private void ChartTr_GetToolTipText(object sender, ToolTipEventArgs e)
@@ -88,6 +103,16 @@ namespace HW1_NLP.Screens
                     var dataPoint = e.HitTestResult.Series.Points[e.HitTestResult.PointIndex];
                     e.Text = string.Format("X:\t{0}\nY:\t{1}", dataPoint.XValue, dataPoint.YValues[0]);
                     break;
+            }
+        }
+
+        private void TabControls_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TabControls.SelectedIndex == 1)
+            {
+                zipfProcess1 = new ZipfProcess();
+                PreparAndApplyZipfLaw(zipfProcess1, zpContextEn);
+                PrepareandapplyZipfLawOnChart(zipfProcess1, ChartEn);
             }
         }
     }

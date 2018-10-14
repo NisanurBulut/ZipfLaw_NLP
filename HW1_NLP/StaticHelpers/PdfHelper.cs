@@ -26,10 +26,10 @@ namespace HW1_NLP.StaticHelpers
                     string currentText = PdfTextExtractor.GetTextFromPage(reader, i, new SimpleTextExtractionStrategy());
                     currentText = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(currentText)));
                     text.Append(currentText);
-                    //if (i == 5000)
-                    //{
-                    //    break;
-                    //}
+                    if (i == 250)
+                    {
+                        break;
+                    }
                 }
                 text.Replace("BDRDNCD", "BİRİNCİ");
               
