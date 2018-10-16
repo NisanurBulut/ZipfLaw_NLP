@@ -8,7 +8,7 @@ namespace HW1_NLP.DescriptiveClassess
 {
   public  class Word
     {
-        public string Wname=string.Empty;
+        public string WFull=string.Empty;
         public string WType = string.Empty;
         public int Wcount = 0;
         public int Worder = 0;
@@ -19,14 +19,14 @@ namespace HW1_NLP.DescriptiveClassess
         }
         public Word(string _wn,string _wt, int _wc,int _wo)
         {
-            Wname = _wn;
+            WFull = _wn;
             WType = _wt;
             Wcount = _wc;
             Worder = _wo;
         }
         public Word(string _wn, string _wt, int _wc, int _wo,double _wf)
         {
-            Wname = _wn;
+            WFull = _wn;
             WType = _wt;
             Wcount = _wc;
             Worder = _wo;

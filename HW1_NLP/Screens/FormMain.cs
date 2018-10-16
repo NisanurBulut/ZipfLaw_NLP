@@ -1,4 +1,6 @@
 ﻿using HW1_NLP.StaticHelpers;
+using net.zemberek.erisim;
+using net.zemberek.tr.yapi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace HW1_NLP.Screens
 {
@@ -38,13 +41,13 @@ namespace HW1_NLP.Screens
 
                 zipfProcess1 = new ZipfProcess();
                 PreparAndApplyZipfLaw(zipfProcess1, zpContextTr);
-                PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziTr.pdf");
+                //PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziTr.pdf");
                 
 
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("İstenmeyen bir hata ile karşılaşıldı "+ex.Message);
             }
         }
         private string ReadAndLoadFile(string fname)
@@ -81,7 +84,7 @@ namespace HW1_NLP.Screens
             for (int z = 0; z < _zp.WordsOfFile.Count(); z++)
             {
                double wf=_zp.WordsOfFile[z].Wfrequency;
-               string wn = _zp.WordsOfFile[z].Wname;
+               string wn = _zp.WordsOfFile[z].WFull;
                 series.Points.AddXY(wn, wf);
             }
             _ch.Series.Add(series);
@@ -119,6 +122,14 @@ namespace HW1_NLP.Screens
                 PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziEn.pdf");
                 tcSayac = tcSayac + 1;
             }
+        }
+
+        private void BtnZemberekAnalyz_Click(object sender, EventArgs e)
+        {
+            Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
+            //sırayla kelimeleri ek kök ayrımına sokmak gerekli
+
+
         }
     }
 }

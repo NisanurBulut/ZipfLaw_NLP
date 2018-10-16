@@ -79,7 +79,7 @@ namespace HW1_NLP.StaticHelpers
 
                 foreach (Word row in _WordList)
                 {
-                    sb=TurkceKarakter(row.Wname);
+                    sb=TurkceKarakter(row.WFull);
 
                     table.AddCell(new Paragraph(sb, font));
                     sb = TurkceKarakter(row.WType);
