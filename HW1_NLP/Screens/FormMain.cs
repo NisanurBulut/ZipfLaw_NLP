@@ -22,6 +22,7 @@ namespace HW1_NLP.Screens
             LblDateTime.Text = DateTime.Now.ToString();
             LblFlag.Text = string.Empty;
         }
+        int tcSayac = 0;
         string zpContextTr=string.Empty;
         string zpContextEn = string.Empty;
         ZipfProcess zipfProcess1 = new ZipfProcess();
@@ -29,6 +30,7 @@ namespace HW1_NLP.Screens
         {
             try
             {
+                
                 LblFlag.Text = "Belirtilen dosyalar okunmaktadır.";
 
                 zpContextTr =  ReadAndLoadFile("HarryPotter-FelsefeTaşı.pdf");
@@ -36,9 +38,9 @@ namespace HW1_NLP.Screens
 
                 zipfProcess1 = new ZipfProcess();
                 PreparAndApplyZipfLaw(zipfProcess1, zpContextTr);
-                PrepareandapplyZipfLawOnChart(zipfProcess1, ChartTr);
+                PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziTr.pdf");
+                
 
-               
             }
             catch(Exception ex)
             {
@@ -47,20 +49,14 @@ namespace HW1_NLP.Screens
         }
         private string ReadAndLoadFile(string fname)
         {
-
-
-            string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string path = Path.Combine(dir, "ReadingFiles");
-            string file = fname;
-            string FilePath = Path.Combine(path, file);
+            
+            string FilePath = PdfHelper.PrepareFilePath(fname,"ReadingFiles");
             string selectedFileContentTr = PdfHelper.ExtractTextFromPdf(FilePath);
 
 
-            LblFlag.Text = "Okunan dosya : " + file;
-            LblFlag.Text = file + "dosyası üzerinde kelime analizi başlatılmıştır";
-
-           
-
+            LblFlag.Text = "Okunan dosya : " + fname;
+            LblFlag.Text = fname + "dosyası üzerinde kelime analizi başlatılmıştır";
+            
             return selectedFileContentTr;
         }
         private void PreparAndApplyZipfLaw(ZipfProcess _zp, string selectedFileContent)
@@ -78,7 +74,7 @@ namespace HW1_NLP.Screens
             _zp.ReOrderWordListByFrequency();
             #endregion
         }
-        private void PrepareandapplyZipfLawOnChart(ZipfProcess _zp,Chart _ch) {
+        private void PrepareAndApplyZipfLawOnChart(ZipfProcess _zp,Chart _ch) {
             
             var series = new Series("Kelimeler");
             
@@ -91,6 +87,12 @@ namespace HW1_NLP.Screens
             _ch.Series.Add(series);
             _ch.Series[0].ChartType = SeriesChartType.Pie;
             _ch.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+
+            // set view range to [0,max]
+            _ch.ChartAreas[0].AxisX.Minimum = 0;
+            _ch.ChartAreas[0].AxisX.Maximum = _zp.WordsOfFile.Count();
+
+            // enable autoscroll
             _ch.ChartAreas[0].CursorX.AutoScroll = true;
             TabControls.Refresh();
         }
@@ -109,11 +111,13 @@ namespace HW1_NLP.Screens
 
         private void TabControls_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TabControls.SelectedIndex == 1)
+            if (TabControls.SelectedIndex == 1 && tcSayac==0)
             {
                 zipfProcess1 = new ZipfProcess();
                 PreparAndApplyZipfLaw(zipfProcess1, zpContextEn);
-                PrepareandapplyZipfLawOnChart(zipfProcess1, ChartEn);
+                PrepareAndApplyZipfLawOnChart(zipfProcess1, ChartEn);
+                PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziEn.pdf");
+                tcSayac = tcSayac + 1;
             }
         }
     }

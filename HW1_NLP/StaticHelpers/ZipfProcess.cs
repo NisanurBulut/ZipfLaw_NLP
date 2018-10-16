@@ -22,7 +22,7 @@ namespace HW1_NLP.StaticHelpers
             for(o=0; o< _contentOfFile.Length; o++)
             {
                 string _word = _contentOfFile[o];
-                bool existWordFlag = WordsOfFile.Exists(a => a.Wname == _word);
+                bool existWordFlag = WordsOfFile.Exists(a => a.Wname.Equals(_word,StringComparison.OrdinalIgnoreCase));
                 if (existWordFlag != true)
                 {
                     int wc = _contentOfFile.Where(a => a.Equals(_word, StringComparison.OrdinalIgnoreCase)).Count();//Kelimenin tekrarı
@@ -42,12 +42,19 @@ namespace HW1_NLP.StaticHelpers
                 double wc = WordsOfFile[w].Wcount;
                 double wo = WordsOfFile[w].Worder;
                 double wf = wc / wo;
-                WordsOfFile[w].Wfrequency = wf;
+                double roundwf = System.Math.Round(wf, 5);
+                WordsOfFile[w].Wfrequency = roundwf;
             }
         }
         public void ReOrderWordListByFrequency()
         {
-            WordsOfFile = WordsOfFile.OrderBy(a => a.Wfrequency).ToList();
+            WordsOfFile = WordsOfFile.Select(b=>new Word{
+                Wname = b.Wname,
+                WType = b.WType,
+                Wcount =b.Wcount,
+                Worder = b.Worder,
+                Wfrequency =b.Wfrequency               
+            }).OrderByDescending(a=>a.Wfrequency).ToList();
         }
     }
 }
