@@ -92,6 +92,7 @@ namespace HW1_NLP.Screens
             _ch.Series[0].ChartType = SeriesChartType.Pie;
             _ch.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
             _ch.ChartAreas[0].CursorX.AutoScroll = true;
+            TabControls.Refresh();
         }
 
         private void ChartTr_GetToolTipText(object sender, ToolTipEventArgs e)
