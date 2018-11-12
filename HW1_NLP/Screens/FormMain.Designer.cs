@@ -28,130 +28,118 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tblp01 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnComboSelect = new System.Windows.Forms.Button();
             this.LblFlag = new System.Windows.Forms.Label();
             this.LblDateTime = new System.Windows.Forms.Label();
-            this.tblp0 = new System.Windows.Forms.TableLayoutPanel();
-            this.TabControls = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ChartEn = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.BtnZemberekAnalyz = new System.Windows.Forms.Button();
+            this.comboBooks = new System.Windows.Forms.ComboBox();
+            this.tblp0 = new System.Windows.Forms.TableLayoutPanel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.pieChart1 = new LiveCharts.Wpf.PieChart();
             this.tblp01.SuspendLayout();
             this.tblp0.SuspendLayout();
-            this.TabControls.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartEn)).BeginInit();
             this.SuspendLayout();
             // 
             // tblp01
             // 
-            this.tblp01.ColumnCount = 3;
-            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tblp01.Controls.Add(this.LblFlag, 0, 0);
-            this.tblp01.Controls.Add(this.LblDateTime, 0, 0);
-            this.tblp01.Controls.Add(this.BtnZemberekAnalyz, 2, 0);
+            this.tblp01.ColumnCount = 5;
+            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblp01.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblp01.Controls.Add(this.BtnComboSelect, 1, 0);
+            this.tblp01.Controls.Add(this.LblFlag, 2, 0);
+            this.tblp01.Controls.Add(this.LblDateTime, 2, 0);
+            this.tblp01.Controls.Add(this.BtnZemberekAnalyz, 4, 0);
+            this.tblp01.Controls.Add(this.comboBooks, 0, 0);
             this.tblp01.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblp01.Location = new System.Drawing.Point(3, 3);
             this.tblp01.Name = "tblp01";
             this.tblp01.RowCount = 1;
             this.tblp01.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblp01.Size = new System.Drawing.Size(794, 16);
+            this.tblp01.Size = new System.Drawing.Size(794, 17);
             this.tblp01.TabIndex = 1;
+            // 
+            // BtnComboSelect
+            // 
+            this.BtnComboSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnComboSelect.Location = new System.Drawing.Point(161, 3);
+            this.BtnComboSelect.Name = "BtnComboSelect";
+            this.BtnComboSelect.Size = new System.Drawing.Size(152, 11);
+            this.BtnComboSelect.TabIndex = 6;
+            this.BtnComboSelect.Text = "Oku\r\n";
+            this.BtnComboSelect.UseVisualStyleBackColor = true;
+            this.BtnComboSelect.Click += new System.EventHandler(this.BtnComboSelect_Click);
             // 
             // LblFlag
             // 
             this.LblFlag.AutoSize = true;
-            this.LblFlag.Location = new System.Drawing.Point(280, 0);
+            this.LblFlag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblFlag.Location = new System.Drawing.Point(477, 0);
             this.LblFlag.Name = "LblFlag";
-            this.LblFlag.Size = new System.Drawing.Size(35, 13);
+            this.LblFlag.Size = new System.Drawing.Size(152, 17);
             this.LblFlag.TabIndex = 3;
             this.LblFlag.Text = "label1";
             // 
             // LblDateTime
             // 
             this.LblDateTime.AutoSize = true;
-            this.LblDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblDateTime.Location = new System.Drawing.Point(3, 0);
+            this.LblDateTime.Location = new System.Drawing.Point(319, 0);
             this.LblDateTime.Name = "LblDateTime";
-            this.LblDateTime.Size = new System.Drawing.Size(271, 16);
+            this.LblDateTime.Size = new System.Drawing.Size(35, 13);
             this.LblDateTime.TabIndex = 2;
             this.LblDateTime.Text = "label1";
+            // 
+            // BtnZemberekAnalyz
+            // 
+            this.BtnZemberekAnalyz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnZemberekAnalyz.Location = new System.Drawing.Point(635, 3);
+            this.BtnZemberekAnalyz.Name = "BtnZemberekAnalyz";
+            this.BtnZemberekAnalyz.Size = new System.Drawing.Size(156, 11);
+            this.BtnZemberekAnalyz.TabIndex = 4;
+            this.BtnZemberekAnalyz.Text = "Türkçe Kaynak İçin Kelime Analizi Başlat";
+            this.BtnZemberekAnalyz.UseVisualStyleBackColor = true;
+            this.BtnZemberekAnalyz.Click += new System.EventHandler(this.BtnZemberekAnalyz_Click);
+            // 
+            // comboBooks
+            // 
+            this.comboBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBooks.FormattingEnabled = true;
+            this.comboBooks.Items.AddRange(new object[] {
+            "HarryPotterKitap1Tr.txt",
+            "HarryPotterBook1En.txt"});
+            this.comboBooks.Location = new System.Drawing.Point(3, 3);
+            this.comboBooks.Name = "comboBooks";
+            this.comboBooks.Size = new System.Drawing.Size(152, 21);
+            this.comboBooks.TabIndex = 5;
             // 
             // tblp0
             // 
             this.tblp0.ColumnCount = 1;
             this.tblp0.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblp0.Controls.Add(this.TabControls, 0, 1);
+            this.tblp0.Controls.Add(this.elementHost1, 0, 1);
             this.tblp0.Controls.Add(this.tblp01, 0, 0);
             this.tblp0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblp0.Location = new System.Drawing.Point(0, 0);
             this.tblp0.Name = "tblp0";
             this.tblp0.RowCount = 2;
             this.tblp0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tblp0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tblp0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tblp0.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblp0.Size = new System.Drawing.Size(800, 450);
             this.tblp0.TabIndex = 0;
             // 
-            // TabControls
+            // elementHost1
             // 
-            this.TabControls.Controls.Add(this.tabPage1);
-            this.TabControls.Controls.Add(this.tabPage2);
-            this.TabControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControls.Location = new System.Drawing.Point(3, 25);
-            this.TabControls.Name = "TabControls";
-            this.TabControls.SelectedIndex = 0;
-            this.TabControls.Size = new System.Drawing.Size(794, 422);
-            this.TabControls.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(786, 396);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Türkçe Metin";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.ChartEn);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(786, 396);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "İngilizce Metin";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // ChartEn
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.ChartEn.ChartAreas.Add(chartArea1);
-            this.ChartEn.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.ChartEn.Legends.Add(legend1);
-            this.ChartEn.Location = new System.Drawing.Point(3, 3);
-            this.ChartEn.Name = "ChartEn";
-            this.ChartEn.Size = new System.Drawing.Size(780, 390);
-            this.ChartEn.TabIndex = 0;
-            this.ChartEn.Text = "chart1";
-            // 
-            // BtnZemberekAnalyz
-            // 
-            this.BtnZemberekAnalyz.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnZemberekAnalyz.Location = new System.Drawing.Point(557, 3);
-            this.BtnZemberekAnalyz.Name = "BtnZemberekAnalyz";
-            this.BtnZemberekAnalyz.Size = new System.Drawing.Size(234, 10);
-            this.BtnZemberekAnalyz.TabIndex = 4;
-            this.BtnZemberekAnalyz.Text = "Türkçe Kaynak İçin Kelime Analizi Başlat";
-            this.BtnZemberekAnalyz.UseVisualStyleBackColor = true;
-            this.BtnZemberekAnalyz.Click += new System.EventHandler(this.BtnZemberekAnalyz_Click);
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(3, 26);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(794, 421);
+            this.elementHost1.TabIndex = 4;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.pieChart1;
             // 
             // FormMain
             // 
@@ -167,9 +155,6 @@
             this.tblp01.ResumeLayout(false);
             this.tblp01.PerformLayout();
             this.tblp0.ResumeLayout(false);
-            this.TabControls.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ChartEn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,10 +165,10 @@
         private System.Windows.Forms.Label LblFlag;
         private System.Windows.Forms.Label LblDateTime;
         private System.Windows.Forms.TableLayoutPanel tblp0;
-        private System.Windows.Forms.TabControl TabControls;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart ChartEn;
         private System.Windows.Forms.Button BtnZemberekAnalyz;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private System.Windows.Forms.Button BtnComboSelect;
+        private System.Windows.Forms.ComboBox comboBooks;
+        private LiveCharts.Wpf.PieChart pieChart1;
     }
 }

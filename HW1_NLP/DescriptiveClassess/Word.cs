@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace HW1_NLP.DescriptiveClassess
 {
-  public  class Word
+    public class Word
     {
-        public string WFull=string.Empty;
+        public string WFull = string.Empty;
         public string WType = string.Empty;
         public int Wcount = 0;
         public int Worder = 0;
         public double Wfrequency = 0.0;
+        public string WStemp = string.Empty;
+        public AdditionalGrammar Wadds=new AdditionalGrammar();
+
         public Word()
         {
 

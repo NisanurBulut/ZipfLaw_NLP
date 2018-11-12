@@ -19,7 +19,6 @@ namespace HW1_NLP.StaticHelpers
             string path = System.IO.Path.Combine(dir,_dicname);
             string file = _filename;
             string FilePath = System.IO.Path.Combine(path, file);
-
             return FilePath;
         }
         public static string ExtractTextFromPdf(string path)
@@ -35,7 +34,7 @@ namespace HW1_NLP.StaticHelpers
                     string currentText = PdfTextExtractor.GetTextFromPage(reader, i, new SimpleTextExtractionStrategy());
                     currentText = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(currentText)));
                     text.Append(currentText);
-                    if (i == 400)
+                    if (i == 4)
                     {
                         break;
                     }
@@ -45,7 +44,7 @@ namespace HW1_NLP.StaticHelpers
                 return text.ToString();
             }
         }
-        public static void WriteToPdf(List<Word> _WordList,string _fname)
+        public static void WriteWordsToPdf(List<Word> _WordList,string _fname)
         {
             iTextSharp.text.Document document = new iTextSharp.text.Document();
             string fpath = PrepareFilePath(_fname,"OutputReports");
@@ -89,12 +88,58 @@ namespace HW1_NLP.StaticHelpers
                     table.AddCell(row.Wfrequency.ToString());
                 }
 
-
-           
-             
+               
                 document.Add(table);
+                document.Close();
+
+            }
+        }
+        public static void WriteAddsToPdf(List<Word> _WordList, string _fname)
+        {
+            iTextSharp.text.Document document = new iTextSharp.text.Document();
+            string fpath = PrepareFilePath(_fname, "OutputReports");
+            PdfWriter.GetInstance(document, new FileStream(fpath, FileMode.Create));
+            string fpathfont = PrepareFilePath("times.ttf", "Fonts");
+            BaseFont arial = BaseFont.CreateFont(fpathfont, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(arial, 12, Font.NORMAL);
+            int countw = _WordList.Count + 1;
 
 
+            if (document.IsOpen() == false)
+            {
+
+                document.Open();
+                PdfPTable table = new PdfPTable(5);
+
+                PdfPCell cell = new PdfPCell(new Phrase(TurkceKarakter("Ek Sıklık Tablosu"), font));
+                cell.Colspan = 5;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(cell);
+
+
+                string sb = TurkceKarakter("Kullanım Sayısı");
+                table.AddCell("Kelime");
+                table.AddCell("Tip");
+                table.AddCell(new Paragraph(sb, font));
+                sb = TurkceKarakter("Kullanım Sırası");
+                table.AddCell(new Paragraph(sb, font));
+                sb = TurkceKarakter("Kullanım Sıklığı");
+                table.AddCell(new Paragraph(sb, font));
+
+                foreach (Word row in _WordList)
+                {
+                    sb = TurkceKarakter(row.WFull);
+
+                    table.AddCell(new Paragraph(sb, font));
+                    sb = TurkceKarakter(row.WType);
+                    table.AddCell(new Paragraph(sb, font));
+                    table.AddCell(row.Wcount.ToString());
+                    table.AddCell(row.Worder.ToString());
+                    table.AddCell(row.Wfrequency.ToString());
+                }
+
+
+                document.Add(table);
                 document.Close();
 
             }

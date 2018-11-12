@@ -1,6 +1,4 @@
 ﻿using HW1_NLP.StaticHelpers;
-using net.zemberek.erisim;
-using net.zemberek.tr.yapi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Media;
+using System.Windows.Forms;
+using Brushes = System.Windows.Media.Brushes;
+using HW1_NLP.DescriptiveClassess;
 
 namespace HW1_NLP.Screens
 {
@@ -25,27 +27,54 @@ namespace HW1_NLP.Screens
             LblDateTime.Text = DateTime.Now.ToString();
             LblFlag.Text = string.Empty;
         }
-        int tcSayac = 0;
+
         string zpContextTr=string.Empty;
         string zpContextEn = string.Empty;
-        ZipfProcess zipfProcess1 = new ZipfProcess();
+        ZipfProcess zipfProcessTr = new ZipfProcess();
+        ZipfProcess zipfProcessEn = new ZipfProcess();
+        int count = 0;
+        public void NewChartLoad(ZipfProcess zp)
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+            string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            pieChart1.Series = new LiveCharts.SeriesCollection();
+            int w = 0;
+            
+            do 
+            {
+
+                PieSeries ps = new PieSeries();
+                ps.Title = zp.WordsOfFile[w].WFull;
+                ps.Values = new ChartValues<double> { zp.WordsOfFile[w].Wfrequency };
+                ps.DataLabels = true;
+                ps.LabelPoint = labelPoint;
+                pieChart1.Series.Add(ps);
+                
+                w++;
+               
+            } while (w <50) ;
+
+
+
+            pieChart1.LegendLocation = LegendLocation.Right;
+        }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             try
             {
-                
+                comboBooks.SelectedIndex = 0;
                 LblFlag.Text = "Belirtilen dosyalar okunmaktadır.";
 
-                zpContextTr =  ReadAndLoadFile("HarryPotter-FelsefeTaşı.pdf");
-                zpContextEn = ReadAndLoadFile("HarryPotterandtheSorcerer'sStone.pdf");
+                zpContextTr =  ReadAndLoadFile("HarryPotterKitap1Tr.txt");          
+                zipfProcessTr = new ZipfProcess();
+                PreparAndApplyZipfLaw(zipfProcessTr, zpContextTr);
+                // PdfHelper.WriteWordsToPdf(zipfProcessTr.WordsOfFile, "KelimeAnaliziTr.pdf");
 
-                zipfProcess1 = new ZipfProcess();
-                PreparAndApplyZipfLaw(zipfProcess1, zpContextTr);
-                //PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziTr.pdf");
-                
-
+                NewChartLoad(zipfProcessTr);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("İstenmeyen bir hata ile karşılaşıldı "+ex.Message);
             }
@@ -53,19 +82,19 @@ namespace HW1_NLP.Screens
         private string ReadAndLoadFile(string fname)
         {
             
-            string FilePath = PdfHelper.PrepareFilePath(fname,"ReadingFiles");
-            string selectedFileContentTr = PdfHelper.ExtractTextFromPdf(FilePath);
+            string FilePath = TxtHelper.PrepareFilePath(fname,"ReadingFiles");
+            string selectedFileContent =TxtHelper.ExtractTextFromTxt(FilePath);
 
 
             LblFlag.Text = "Okunan dosya : " + fname;
             LblFlag.Text = fname + "dosyası üzerinde kelime analizi başlatılmıştır";
             
-            return selectedFileContentTr;
+            return selectedFileContent;
         }
         private void PreparAndApplyZipfLaw(ZipfProcess _zp, string selectedFileContent)
         {
             #region sıklık araştırmasına hazırlık
-            selectedFileContent = Regex.Replace(selectedFileContent, @"\t|\n|\r", "");
+            selectedFileContent = Regex.Replace(selectedFileContent, @"\t|\n|\r", " ");
             selectedFileContent = new string((from c in selectedFileContent where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
             string[] outputContent = selectedFileContent.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             #endregion
@@ -77,59 +106,42 @@ namespace HW1_NLP.Screens
             _zp.ReOrderWordListByFrequency();
             #endregion
         }
-        private void PrepareAndApplyZipfLawOnChart(ZipfProcess _zp,Chart _ch) {
-            
-            var series = new Series("Kelimeler");
-            
-            for (int z = 0; z < _zp.WordsOfFile.Count(); z++)
-            {
-               double wf=_zp.WordsOfFile[z].Wfrequency;
-               string wn = _zp.WordsOfFile[z].WFull;
-                series.Points.AddXY(wn, wf);
-            }
-            _ch.Series.Add(series);
-            _ch.Series[0].ChartType = SeriesChartType.Pie;
-            _ch.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
-
-            // set view range to [0,max]
-            _ch.ChartAreas[0].AxisX.Minimum = 0;
-            _ch.ChartAreas[0].AxisX.Maximum = _zp.WordsOfFile.Count();
-
-            // enable autoscroll
-            _ch.ChartAreas[0].CursorX.AutoScroll = true;
-            TabControls.Refresh();
-        }
-
-        private void ChartTr_GetToolTipText(object sender, ToolTipEventArgs e)
-        {
-            // Check selected chart element and set tooltip text for it
-            switch (e.HitTestResult.ChartElementType)
-            {
-                case ChartElementType.DataPoint:
-                    var dataPoint = e.HitTestResult.Series.Points[e.HitTestResult.PointIndex];
-                    e.Text = string.Format("X:\t{0}\nY:\t{1}", dataPoint.XValue, dataPoint.YValues[0]);
-                    break;
-            }
-        }
-
-        private void TabControls_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (TabControls.SelectedIndex == 1 && tcSayac==0)
-            {
-                zipfProcess1 = new ZipfProcess();
-                PreparAndApplyZipfLaw(zipfProcess1, zpContextEn);
-                PrepareAndApplyZipfLawOnChart(zipfProcess1, ChartEn);
-                PdfHelper.WriteToPdf(zipfProcess1.WordsOfFile, "KelimeAnaliziEn.pdf");
-                tcSayac = tcSayac + 1;
-            }
-        }
+   
+       
+   
 
         private void BtnZemberekAnalyz_Click(object sender, EventArgs e)
         {
-            Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
-            //sırayla kelimeleri ek kök ayrımına sokmak gerekli
+            zipfProcessTr.MorphologyAnalysis();                    
+        }
 
+        private void BtnComboSelect_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            string file = comboBooks.SelectedItem.ToString();
 
+            if (file.Contains("Book") == true)
+            {
+                if (count == 0)
+                {
+                    zpContextEn = ReadAndLoadFile(file);
+                    zipfProcessEn = new ZipfProcess();
+                    PreparAndApplyZipfLaw(zipfProcessEn, zpContextEn);
+                    NewChartLoad(zipfProcessEn);
+                    count = 1;
+                }
+                else
+                {
+                    NewChartLoad(zipfProcessEn);
+                }
+            }
+            else
+            {
+               
+                NewChartLoad(zipfProcessTr);
+            }
+            this.Cursor = Cursors.Default;
+         
         }
     }
 }
