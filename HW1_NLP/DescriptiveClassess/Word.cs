@@ -19,6 +19,8 @@ namespace HW1_NLP.DescriptiveClassess
         public List<string> Wadds=new List<string>();
         public double Constant = 0;
         public double A = 0.0;
+      
+
         public Word()
         {
 

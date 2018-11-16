@@ -25,7 +25,7 @@ namespace HW1_NLP.StaticHelpers
             string metin = string.Empty;
             satir = SR_nesnesi.ReadLine();// ilk satırı okur
             int c = 0;
-            while (satir != null)
+            while (satir != null /*&& c<15*/)
             {
 
                 metin = metin + satir;

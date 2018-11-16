@@ -67,16 +67,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DescriptiveClassess\Add.cs" />
     <Compile Include="DescriptiveClassess\AdditionalGrammar.cs" />
+    <Compile Include="DescriptiveClassess\Stem.cs" />
     <Compile Include="DescriptiveClassess\Word.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,9 +91,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Screens\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Screens\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

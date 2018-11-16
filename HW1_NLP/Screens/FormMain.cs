@@ -27,9 +27,8 @@ namespace HW1_NLP.Screens
             InitializeComponent();
             LblDateTime.Text = DateTime.Now.ToString();
             LblFlag.Text = string.Empty;
-           labelPoint = chartPoint =>
+            labelPoint = chartPoint =>
             string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
             pieChart1.Series = new LiveCharts.SeriesCollection();
         }
 
@@ -38,10 +37,24 @@ namespace HW1_NLP.Screens
         ZipfProcess zipfProcessTr = new ZipfProcess();
         ZipfProcess zipfProcessEn = new ZipfProcess();
         int count = -1;
-       
-        public void NewChartLoadByFrequency(ZipfProcess zp)
+        public void NewChartLoadByAFrequency(ZipfProcess zp)
         {
-            
+            int a = 0;
+            do
+            {
+                PieSeries ps = new PieSeries();
+                ps.Title = zp.FinalAddsOfWords[a].AddName + " => " + zp.FinalAddsOfWords[a].Acount + "/" + zp.FinalAddsOfWords[a].Rank + "=" + zp.FinalAddsOfWords[a].Afrequency;
+                ps.Values = new ChartValues<double> { zp.FinalAddsOfWords[a].Afrequency };
+                ps.DataLabels = true;
+                ps.LabelPoint = labelPoint;
+                pieChart1.Series.Add(ps);
+                a++;
+            } while (a < 30 && a < zp.FinalAddsOfWords.Count);
+            pieChart1.LegendLocation = LegendLocation.Right;
+
+        }
+        public void NewChartLoadByFrequency(ZipfProcess zp)
+        {            
             int w = 0;            
             do 
             {
@@ -56,6 +69,7 @@ namespace HW1_NLP.Screens
             pieChart1.LegendLocation = LegendLocation.Right;
            
         }
+
         public void NewChartLoadByContant(ZipfProcess zp)
         {
             int w = 0;
@@ -93,7 +107,20 @@ namespace HW1_NLP.Screens
             pieChart1.LegendLocation = LegendLocation.Right;
 
         }
+        public void LoadListbox(ZipfProcess zp)
+        {
+            listBox1.Items.Clear();
+            listBox1.Items.Add("Metinde araştırılan kelime sayısı : " + zipfProcessTr.WordCount);
+            listBox1.Items.Add("Metinde araştırılan tekrarsız kelime sayısı : " + zipfProcessTr.UniqueWordCount);
+            listBox1.Items.Add("Metinde araştırılan tekrarsız kelime kök sayısı : " + zipfProcessTr.UniqueStemCount);
+            listBox1.Items.Add("\n\n");
 
+            foreach (Stem s in zipfProcessTr.StemTypeBrief)
+            {
+                listBox1.Items.Add(s.Type + " tipinde kök sayısı : " + s.Count);
+            }
+
+        }
         private void FormMain_Load(object sender, EventArgs e)
         {
             try
@@ -106,7 +133,7 @@ namespace HW1_NLP.Screens
                 zipfProcessTr.FilePath = filename;
                 PrepareAndApplyZipfLaw(zipfProcessTr, zpContextTr);
                 // PdfHelper.WriteWordsToPdf(zipfProcessTr.WordsOfFile, "KelimeAnaliziTr.pdf");
-
+                LoadListbox(zipfProcessTr);
                 NewChartLoadByA(zipfProcessTr);
             }
             catch (Exception ex)
@@ -132,11 +159,12 @@ namespace HW1_NLP.Screens
             selectedFileContent = new string((from c in selectedFileContent where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c) select c).ToArray());
             string[] outputContent = selectedFileContent.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             #endregion
-
+            _zp.WordCount = outputContent.Length;
             #region Zipf kanunun kontrol edilmesi  
-            _zp.FindWordsForFile(outputContent);
+         
             if (_zp.FilePath.Contains("Book") == false)
             {
+                _zp.FindWordsForFile(outputContent);
                 _zp.FindStempForWords();
                 _zp.InitWordsOfFile();
                 _zp.CalculateWfrequency();
@@ -144,8 +172,10 @@ namespace HW1_NLP.Screens
             else
             {
                 //burayı kodlayacağım
-                _zp.StemOfFile.AddRange(_zp.WordsOfFile);
-                _zp.CalculateWfrequencyEn();
+               
+                _zp.FindWordsForFileEn(outputContent);             
+                _zp.InitWordsOfFileen();
+                _zp.CalculateWfrequency();
             }
            
            // _zp.ReOrderWordListByConstant();
@@ -161,31 +191,32 @@ namespace HW1_NLP.Screens
         {
             if (count != -1)
             {
+                pieChart1.Series = new LiveCharts.SeriesCollection();
                 this.Cursor = Cursors.WaitCursor;
                 string file = comboBooks.SelectedItem.ToString();
 
                 if (file.Contains("Book") == true)
                 {
+                    button1.Visible = false;
+                    listBox1.Visible = false;
                     if (count == 0)
-                    {
-                        zipfProcessEn = new ZipfProcess();
+                    {                     
                         zpContextEn = ReadAndLoadFile(file);
-                      
                         zipfProcessEn.FilePath = file;
                         PrepareAndApplyZipfLaw(zipfProcessEn, zpContextEn);
                         NewChartLoadByFrequency(zipfProcessEn);
                         count = 1;
                     }
                     else
-                    {
-                      
+                    {                     
                         count = 1;
                         NewChartLoadByFrequency(zipfProcessEn);
                     }
                 }
                 else
                 {
-
+                    button1.Visible = true;
+                    listBox1.Visible = true;
                     NewChartLoadByFrequency(zipfProcessTr);
                 }
                 this.Cursor = Cursors.Default;
@@ -201,22 +232,42 @@ namespace HW1_NLP.Screens
         {
             pieChart1.Series = new LiveCharts.SeriesCollection();
             ComboBox cb = (ComboBox)sender;
-            switch (cb.SelectedIndex)
+            ZipfProcess SelectZipf = new ZipfProcess();
+            string file = comboBooks.SelectedItem.ToString();
+            if (file.Contains("Book") != true)
+            {
+              
+                SelectZipf = zipfProcessTr;
+            }
+            else
+            {
+                SelectZipf = zipfProcessEn;
+            }
+                switch (cb.SelectedIndex)
             {
                 case 0:
-                    NewChartLoadByContant(zipfProcessTr);
+                    NewChartLoadByContant(SelectZipf);
                     break;
                 case 1:
-                    NewChartLoadByA(zipfProcessTr);
+                    NewChartLoadByA(SelectZipf);
                    
                     break;
                 case 2:
-                    NewChartLoadByFrequency(zipfProcessTr);
+                    NewChartLoadByFrequency(SelectZipf);
                     break;
                 case 3:
-                    NewChartLoadByFrequency(zipfProcessTr);
+                    NewChartLoadByFrequency(SelectZipf);
                     break;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pieChart1.Series = new LiveCharts.SeriesCollection();
+            zipfProcessTr.FindAddsOfWords();
+            zipfProcessTr.InitAddlist();
+            zipfProcessTr.CalculateAfrequency();
+            NewChartLoadByAFrequency(zipfProcessTr);
         }
     }
 }
