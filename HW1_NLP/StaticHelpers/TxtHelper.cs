@@ -24,14 +24,14 @@ namespace HW1_NLP.StaticHelpers
             string satir;
             string metin = string.Empty;
             satir = SR_nesnesi.ReadLine();// ilk satırı okur
-
+            int c = 0;
             while (satir != null)
             {
 
                 metin = metin + satir;
                 satir = SR_nesnesi.ReadLine();// sonraki satırı okumak için
                 metin = metin + " ";
-                
+                c++;
             }
             SR_nesnesi.Close();
 

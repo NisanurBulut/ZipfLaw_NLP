@@ -84,7 +84,7 @@ namespace HW1_NLP.StaticHelpers
                     sb = TurkceKarakter(row.WType);
                     table.AddCell(new Paragraph(sb, font));
                     table.AddCell(row.Wcount.ToString());
-                    table.AddCell(row.Worder.ToString());
+                    table.AddCell(row.WRank.ToString());
                     table.AddCell(row.Wfrequency.ToString());
                 }
 
@@ -134,7 +134,7 @@ namespace HW1_NLP.StaticHelpers
                     sb = TurkceKarakter(row.WType);
                     table.AddCell(new Paragraph(sb, font));
                     table.AddCell(row.Wcount.ToString());
-                    table.AddCell(row.Worder.ToString());
+                    table.AddCell(row.WRank.ToString());
                     table.AddCell(row.Wfrequency.ToString());
                 }
 
