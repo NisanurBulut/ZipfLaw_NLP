@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Forms;
 using Brushes = System.Windows.Media.Brushes;
 using HW1_NLP.DescriptiveClassess;
+using net.zemberek.erisim;
+using net.zemberek.tr.yapi;
 
 namespace HW1_NLP.Screens
 {
@@ -119,10 +121,25 @@ namespace HW1_NLP.Screens
             {
                 listBox1.Items.Add(s.Type + " tipinde kök sayısı : " + s.Count);
             }
+        }
+        public void LoadListbox()
+        {
+            listBox1.Items.Clear();
+            listBox1.Items.Add("Metinde araştırılan ek sayısı : " + zipfProcessTr.AddsOfWords.Count);
+            listBox1.Items.Add("Metinde araştırılan tekrarsız ek sayısı : " + zipfProcessTr.UniqueAddCount);
+           
+            listBox1.Items.Add("\n\n");
 
+            foreach (Add a in zipfProcessTr.FinalAddsOfWords)
+            {
+                listBox1.Items.Add(a.AddName + " tipinde ek sayısı : " +a.Acount);
+            }
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
+            string test = "Nisanur geldi.";
+            Zemberek zb = new Zemberek(new TurkiyeTurkcesi());
+            var item=  zb.cozumleyici().cozumle(test);
             try
             {
                 comboBooks.SelectedIndex = 0;
@@ -263,11 +280,15 @@ namespace HW1_NLP.Screens
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             pieChart1.Series = new LiveCharts.SeriesCollection();
+            
             zipfProcessTr.FindAddsOfWords();
             zipfProcessTr.InitAddlist();
             zipfProcessTr.CalculateAfrequency();
             NewChartLoadByAFrequency(zipfProcessTr);
+            LoadListbox();
+            this.Cursor = Cursors.Default;
         }
     }
 }
