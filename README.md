@@ -138,10 +138,10 @@ Bu sıra sıklık kuralının sebebi olarak genlerimizde gizlenmiş olan seçim 
 
 Yalnız şu bir gerçektir ki zipf yasasının işleme mekanizmasının çözülmesi, insan eğilimlerinin ne olduğundan çok daha fazlasını ön görebilecektir.
 
-“Tabiat kanunları tanrının eliyle matematik dilinde yazılmışlardır." 
+<i>“Tabiat kanunları tanrının eliyle matematik dilinde yazılmışlardır." 
 "Tabiatı anlamak için onun yazıldığı dili anlamanız gerekir ve o dil de matematiktir.”
 
- Galileo Galilei
+ Galileo Galilei</i>
 
 Kaynakça
 1.	https://en.wikipedi0.org/wiki/George_Kingsley_Zipf
