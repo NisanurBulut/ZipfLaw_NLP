@@ -15,7 +15,7 @@ Birleşik Devletler’deki nüfusa göre en üst sıralarda yer alan şehirlere 
 
 Zipf yasasının, şehir büyüklükleri, nüfus oranları ya da metinlerde geçen kelime anlam sıklığındaki uygunluğu gibi daha pek çok alanda doğruluğunun ortaya çıkma sebebi halen bilinmektedir Zipf Yasası birbirimizle iletişim kurma, ticaret yapma ve topluluk oluşturma yöntemlerimizi sağlama bağlayan temel bir toplumsal dinamik kuralın belki de sadece bir yönüdür.[3]
 
-# Zipf Yasası Uygulama Anlatım
+## Zipf Yasası Uygulama Anlatım
 Bir metindeki benzeri olmayan kelimeler, yani bir kelimeyi birden fazla kez saymamak şartıyla, metinde kaç kez geçtiği sayılır. 
 Freq(word)=Metinde bir kelimenin kaç kez kullanıldığını gösterir.
 
@@ -40,8 +40,52 @@ Zipf yasasını uygulayacak olursak, elde etmemiz gereken ilk şey  freq(r) değ
 - Sıklık değeri en çok ya da en az olan kelimelere ait sonuçlara bakmak aldatıcıdır. Bunlara dair sonuçlar genelde en fazla hataya sahip sonuçlardır. İdeal gözlem için, kelimelerin derecesi 1,10,100,200… şeklinde  olacak şekilde, Zipf yasasına olan uygunluklarına bakılmalıdır. Zipf yasası için ne uygun gösterim nokta grafikleridir. Sonuçlar logaritması alındıktan sonra görüntülendiğinde daha net görülecektir.[5]
 - Kodlama aşamasında, şimdiye dek anlatılmış olan Zipf kanunu ilkeleri gösterilmeye çalışılmıştır.
 
-# Zipf Yasası Uygulamasına Örnekler
+## Zipf Yasası Uygulamasına Örnekler
 - Wikipedia’dan temin edilen Amerika’daki en kalabalık ilk kırk şehrin 2015 nüfuslarının gösterimi[6]
 
 
-![Nüfus yoğunluğunun şehir bazlı dağılımı](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/sehir-dagilim.jpg)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/sehir-dagilim.jpg)
+
+- TÜİK’in sunduğu Adrese Dayalı Nüfus Kayıt Sistemi verilerinden alınan Türkiye illerinin 2017 nüfus sonuçları
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/sehir-dagilim.jpg)
+
+Birinci sırada 15 milyon nüfus değeriyle İstanbul vardır. İkinci sırada ki Ankara’nın nüfus oranı 7.5 milyon olması beklenirken 5.5 milyon değerindedir. Ama 3. Sırada İzmir 4.2 milyon değeriyle üçte bir oranına yaklaşır. Onuncu sıradaki Kocaeli 1,5 milyonluk nüfusuyla 15 milyonun onda birini, yirminci sıradaki Aydın 750 binlik nüfusuyla İstanbul nüfusunun yirmide birini tam isabetle tutturur.
+
+- Ak Parti resmi sitesinden alınan seçim beyannamesi
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/akparti-beyanname.jpg)
+
+AK Parti beyannamesinde geçen tüm kelimelerin sayısı: 90800. Tekrar eden kelimeleri çıkarttığımızda 17644 tekil kelime kalır. Tüm kelimeler geçiş sıklıklarına göre dizildiklerinde en çok kullanılan ilk on kelimenin “ve” (3798), “bir” (1008), “ile” (676), “bu” (620), “için” (597), “olarak” (511), “daha” (463), “yılında” (453), “olan” (402), “devam” (318) olur. Bu metnin de Zipf Kanunu’na uyduğu söylenebilir. 
+
+- CHP resmi sitesinden alınan seçim beyannamesi
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/chp-beyanname.jpg)
+
+CHP beyannamesinde toplam 30622 kelime vardır. Tekrarsız kelime sayısı 8904’tür. CHP beyannamesinde en sık kullanılan ilk on kelimenin kullanım sıklıkları şöyle sıralanır: “ve” (1589), “bir” (466), “için” (217), “sağlayacağız” (199), “tüm” (182), “bu” (168), “ile” (156), “kamu” (149), “eğitim” (122), “iş” (120).  Bu metin de genel olarak Zipf Kanunu’na uyar. Her ne kadar ikinci sıradaki kelime olan “bir” beklenenden az görülse de on, yirmi, otuz ve kırkıncı sıradaki kelimeler kanununca öngörülen sayılara yakın sıklıkta kullanılmaktadır.
+## Zipf Yasasına Dair Uygulama Program
+
+Program, HarryPotter ve felsefe taşı kitabınıın İngilizce aslını ve Türkçe çevirindeki kelime-köklerinin Zipf yasasına uygunluğunu göstermeye çalışır. Ayrıca, kitabın Türkçe çevirisi için her bir kelimenin eklerinin türleriyle birlikte listelemesi ve  zipf kanununa olan uygunluğunun gösterimini yapar.
+Metin Üzerinde Yapılan Ön İşlemler
+- Pdf formatındaki kitap metinleri, txt dosyası haline getirildi.
+- Metin dosyalarında bulunan, bütün kelimeler küçük harf formatına getirildi.
+- Kelimeler arasında bulunan, noktalama işaretleri kaldırıldı.
+- Zipf kanunu araştırması yapılırken, kelimeler köklerine ayrıldı ve kökleri üzerinden bir hesaplama işlemi yapılmıştır.
+- Kelimeler zemberek yardımıyla Türkçe diline ait olup olmadığı kontrolüne tabi tutuldu. Bu sebeple Harry, Privet, Mr, Mss gibi kelimeler sayıma dahil edilmemiştir. Böylece özel isimlerinde kontrol edilmesi gibi bir işlem yükünden muaf olunmuştur.
+
+### <b> Programın Geliştirilmesinde Kullanılan Bileşenler</b>
+
+Yazılı metin üzerinde, kelime analizleri yapabilmek için Zemberek [6] kütüphanesinin .Net formatından  yararlanılmıştır. Sonuçların grafik gösterimleri için LiveChart Framework’ten [7] yararlanılmıştır. Zipf kanununun uygunluğuna dair araştırma sonuçlarını pdf dosya formatında saklamak için iTextSharp [8]  .Net kütüphanesinden yararlanılmıştır.
+
+Program C# programlama dili kullanılarak, Windows Form Application olarak masaüstü olarak geliştirilmiştir.
+
+### <b>Program Çalışmasına Dair Sonuç Gösterimleri</b>
+
+Sonuç gösterimlerinde, ilk 30 kelime dağılımı gösterilmiştir.
+
+1.	<b>Türkçe Metin Üzerinde f*r=A Gösterimi</b>
+
+Türkçe metinde her kelime sayılmış ve kullanım sıklığına göre artan sırada derecelendirilmiştir. Kullanım miktarının, derecesiyle çarpımı yaklaşık olarak yakın sayıları vermelidir. Sonuçların yakın anlamda aynı değerleri verdiğinin gösterimde daha net anlaşılması için daire grafik gösteriminden yararlanılmıştır.
+
+Türkçe metinde, üzerinde araştırma yapılan tekil olmayan 55449 adet kelime bulunmuştur ve  tekil kelime sayısı 13088olarak belirlenmiştir. Bu kelimeler üzerinde kök ayrımı yapıldığında benzersiz olan kök sayısı 2340 olarak saptanmıştır. Köklerde kendi içlerinde sıfat-kök, isim-kök, edat-kök,zamir-kök, bağlaç-kök,zaman-kök,soru-kök,ünlem-kök,imek-kök,yankı-kök,sayı-kök gibi türleriyle sınıflandırılmış ve sayılmıştır.
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/Anlatim.jpg)
