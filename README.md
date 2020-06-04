@@ -62,6 +62,7 @@ AK Parti beyannamesinde geçen tüm kelimelerin sayısı: 90800. Tekrar eden kel
 ![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/chp-beyanname.jpg)
 
 CHP beyannamesinde toplam 30622 kelime vardır. Tekrarsız kelime sayısı 8904’tür. CHP beyannamesinde en sık kullanılan ilk on kelimenin kullanım sıklıkları şöyle sıralanır: “ve” (1589), “bir” (466), “için” (217), “sağlayacağız” (199), “tüm” (182), “bu” (168), “ile” (156), “kamu” (149), “eğitim” (122), “iş” (120).  Bu metin de genel olarak Zipf Kanunu’na uyar. Her ne kadar ikinci sıradaki kelime olan “bir” beklenenden az görülse de on, yirmi, otuz ve kırkıncı sıradaki kelimeler kanununca öngörülen sayılara yakın sıklıkta kullanılmaktadır.
+
 ## Zipf Yasasına Dair Uygulama Program
 
 Program, HarryPotter ve felsefe taşı kitabınıın İngilizce aslını ve Türkçe çevirindeki kelime-köklerinin Zipf yasasına uygunluğunu göstermeye çalışır. Ayrıca, kitabın Türkçe çevirisi için her bir kelimenin eklerinin türleriyle birlikte listelemesi ve  zipf kanununa olan uygunluğunun gösterimini yapar.
@@ -82,7 +83,7 @@ Program C# programlama dili kullanılarak, Windows Form Application olarak masa�
 
 Sonuç gösterimlerinde, ilk 30 kelime dağılımı gösterilmiştir.
 
-1.	<b>Türkçe Metin Üzerinde f*r=A Gösterimi</b>
+ ## <b>Türkçe Metin Üzerinde f*r=A Gösterimi</b>
 
 Türkçe metinde her kelime sayılmış ve kullanım sıklığına göre artan sırada derecelendirilmiştir. Kullanım miktarının, derecesiyle çarpımı yaklaşık olarak yakın sayıları vermelidir. Sonuçların yakın anlamda aynı değerleri verdiğinin gösterimde daha net anlaşılması için daire grafik gösteriminden yararlanılmıştır.
 
