@@ -115,7 +115,7 @@ Her kelime, eklerine Zemberek kütüphanesi yardımıyla eklerine ayrılmıştı
 
 Ekranın sol tarafında ekler türlerine bağlı olarak adetsel anlamda listelenmiştir. Ekranın ortasındaki daire grafiği ise eklerin zipf yasasına uygunluğunu göstermektedir. Birinci sıradaki ek neredeyse ikinci sıradaki ekin iki katıyken üçüncü sıradaki ekin üç katıdır. Sıra sıklık örüntüsü kesin sayılarla gösterilemese dahi yakın değerlere yine ulaşılmıştır. Ekranın en sağ tarafında ise, daire grafiğine ait etiket gösterimi yer almaktadır. Grafiği oluşturan ilk 30 değerine elde edimine dair kullanılan f/r formülü de dinamik olarak yazılmıştır.
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran4.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran4.png)
 
 ## <b>İngilizce Metin Üzerinde f/r Gösterimi</b>
 
@@ -125,7 +125,7 @@ Bulunan sonuçlar, değerlendirildiğinde yine kesin katlı bir örüntü elde e
 
 Zipf yasasının İngilizce metin üzerindeki sıra sıklık dağılımına dair grafik gösterimi aşağıda ki gibidir:
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran5.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran5.png)
 
 # <b> Sonuç </b>
 
