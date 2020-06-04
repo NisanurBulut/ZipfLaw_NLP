@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HW1_NLP.StaticHelpers
+namespace ZipfLaw_NLP.StaticHelpers
 {
     public static class TxtHelper
     {

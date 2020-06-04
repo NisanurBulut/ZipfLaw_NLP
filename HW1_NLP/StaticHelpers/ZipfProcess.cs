@@ -1,4 +1,4 @@
-﻿using HW1_NLP.DescriptiveClassess;
+﻿using ZipfLaw_NLP.DescriptiveClassess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using net.zemberek.tr.yapi;
 using net.zemberek.yapi;
 using net.zemberek.yapi.ek;
 
-namespace HW1_NLP.StaticHelpers
+namespace ZipfLaw_NLP.StaticHelpers
 {
     public class ZipfProcess
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HW1_NLP.DescriptiveClassess
+namespace ZipfLaw_NLP.DescriptiveClassess
 {
   public  class AdditionalGrammar
     {

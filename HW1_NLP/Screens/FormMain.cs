@@ -1,4 +1,4 @@
-﻿using HW1_NLP.StaticHelpers;
+﻿using ZipfLaw_NLP.StaticHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +15,11 @@ using LiveCharts.Wpf;
 using System.Windows.Media;
 using System.Windows.Forms;
 using Brushes = System.Windows.Media.Brushes;
-using HW1_NLP.DescriptiveClassess;
+using ZipfLaw_NLP.DescriptiveClassess;
 using net.zemberek.erisim;
 using net.zemberek.tr.yapi;
 
-namespace HW1_NLP.Screens
+namespace ZipfLaw_NLP.Screens
 {
     public partial class FormMain : Form
     {

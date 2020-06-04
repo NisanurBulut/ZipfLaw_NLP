@@ -95,3 +95,60 @@ Türkçe metinde, üzerinde araştırma yapılan tekil olmayan 55449 adet kelime
 ![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran.JPG)
 
 Türkçe metinde geçem kelime kökleri sayıldıktan sonra, en çok kullanılan kök için sıralama 1 den başlayacak şekilde derecelendirilmiştir. Kullanım sıklığının, derecesiyle çarpımı sonucunda elde edilen sabit sayı ilk 30 kelime için kesinlikle aynı değildir ancak grafikten de anlaşılacağı üzere yakın değerlere sahiptir.
+
+## <b>	Türkçe Metin Üzerinde r*(f/N) Gösterimi</b>
+Zipf yasası anlatımı bölümünde, formül yeniden yazıldığında, r * freq(r) = A * N formülü elde edilir denmişti. Bu yeniden yazımın program tarafından gerçekleştiriminde dolaylı yoldan yine sabit bir A sayısının olduğu gösterilmeye çalışılmıştır. Kelime köklerinin sıklıklarının, metinde ki tekil kelime sayısına bölümünün, dereceyle çarpılması işlemi sonucu bulunan ondalık değerler 4 basamak olacak şekilde yuvarlanmıştır. Kesin aynı değeri göstermesini beklememekle birlikte yakın değerlerin bulunması hedeflenmiştir.
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran2.JPG)
+
+Grafik dikkatlice incelendiğinde, bulunan ondalık değerlerin birbirlerine kesin eşit değerde olmadığı halde yakın değerlerde olduğu görülür.
+## <b>	Türkçe Metin Üzerinde f/r Gösterimi</b>
+Kelime köklerini kullanım sıklıklarına göre derecelendirip, sıklık sayısını derecesine böldüğümüzde elde edilen değerlerin katlı bir örüntü oluşturması beklenir. Sonuçların kesin aynı kat değerlerinde olmasa dahi yakın değerlere sahip olması beklenir.
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran3.JPG)
+
+Grafik incelendiğinde, birinci sıradaki “da” kökü 495 oran değerine sahipken ikinci sıradaki  “ama” 280,5 oran değerine sahiptir. Üçüncü sıradaki “de” 152, dördüncü sıradaki “ne” 77,75 değerindedir.
+
+## <b>	Türkçe Metin Üzerinde Ek Dağılımlarının f/r Gösterimi</b>
+
+Her kelime, eklerine Zemberek kütüphanesi yardımıyla eklerine ayrılmıştır. Eklerine ayırma işlemi sürecinde her ek tipiyle birlikte sayılmıştır. Türkçe metin üzerinde ek dağılımına bakıldığında  24655 adet ek sayılmıştır. Bu ekler tekrarsız olarak yeniden sayıldığında 97 adet olduğu görülmüştür. Eklerin türlerine bakıldığında da yine 97 adet tür bulunmuştur.
+
+Ekranın sol tarafında ekler türlerine bağlı olarak adetsel anlamda listelenmiştir. Ekranın ortasındaki daire grafiği ise eklerin zipf yasasına uygunluğunu göstermektedir. Birinci sıradaki ek neredeyse ikinci sıradaki ekin iki katıyken üçüncü sıradaki ekin üç katıdır. Sıra sıklık örüntüsü kesin sayılarla gösterilemese dahi yakın değerlere yine ulaşılmıştır. Ekranın en sağ tarafında ise, daire grafiğine ait etiket gösterimi yer almaktadır. Grafiği oluşturan ilk 30 değerine elde edimine dair kullanılan f/r formülü de dinamik olarak yazılmıştır.
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran4.JPG)
+
+## <b>İngilizce Metin Üzerinde f/r Gösterimi</b>
+
+İngilizce metin üzerinde zipf kanunu araştırması yapılırken, Türkçe metinde yapılan ön işlemlerin aynıları uygulanmıştır. Yalnız elbette kelimelere dair İngilizce kontrolü yapılmamıştır ya da ekine köküne ayırma işlemleri yapılmamıştır. Kelimeler sayılmış ve yeniden derecelendirilmiştir. Sıklık sayılarının derecelerine bölümüyle elde edilen ondalık değerler yine dört basamak değeriyle yuvarlanmıştır.
+
+Bulunan sonuçlar, değerlendirildiğinde yine kesin katlı bir örüntü elde edilmemiştir ancak dairesel grafik göz önüne alındığında birinci kelime yaklaşık olarak ikinci sıradaki kelimenin iki katıyken üçüncü sıradaki kelimenin üç katıdır. Aynı örüntü diğer sıralamadaki kelimeler için de geçerlidir.
+
+Zipf yasasının İngilizce metin üzerindeki sıra sıklık dağılımına dair grafik gösterimi aşağıda ki gibidir:
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran5.JPG)
+
+# <b> Sonuç </b>
+
+Ekosisteme baktığımızda kendi içinde istikrar taşıyan pek çok yasa vardır örneğin altın oran, pi sayısı, Euler sabiti. Bu yasalar, bir düzenle ortaya konan yasalar değil keşfedilen yasalardır.
+Tabiatta, hayatımızda mahiyetini kavramakta zorlandığımız acayip bir düzen var. Yüksek zekâlar bu sırları peşinde tecessüs ile koşmaya devam ediyorlar.
+
+Zipf yasasının şehirlere uygulanmasındaki sonuçların uygunluğu ya da altın oranın varlığını algılamak zor olmasa gerek çünkü doğal bir işleyiş, canlılara ait bir yaşam parçasından bahsediliyor. Ancak metin analizlerine bakıldığında dil ve içerik fark etmeksizin yasasının ürettiği sabit sonuçların neden elde edildiği gizemi hala korunmaktadır.
+
+Bu sıra sıklık kuralının sebebi olarak genlerimizde gizlenmiş olan seçim eğilimleri gösterilebilir. Ama burada da bir çıkmaza girilmektedir çünkü bu seçim eğilimlerinin de neden ve nasıl hareket geçtiği hala bir gizem konusudur.  Belki de zipf yasası bir nedene bağlı sonuç olmaktan ziyade, toplumsal davranışlarımız, iletişimlerimiz, ticari meselelerimizin sonucunu gösteren bir yöndür.
+
+Yalnız şu bir gerçektir ki zipf yasasının işleme mekanizmasının çözülmesi, insan eğilimlerinin ne olduğundan çok daha fazlasını ön görebilecektir.
+
+“Tabiat kanunları tanrının eliyle matematik dilinde yazılmışlardır." 
+"Tabiatı anlamak için onun yazıldığı dili anlamanız gerekir ve o dil de matematiktir.”
+
+ Galileo Galilei
+
+Kaynakça
+1.	https://en.wikipedi0.org/wiki/George_Kingsley_Zipf
+2.	https://evrimagaci.org/zipf-yasasi-sehir-buyuklugu-ve-kelime-kullanim-sikligini-ongoren-gizemli-yasa-1814
+3.	https://io9.gizmodo.com/the-mysterious-law-that-governs-the-size-of-your-city-1479244159
+4.	http://www.ccs.neu.edu/home/ekanou/ISU535.09X2/Handouts/Review_Material/zipfslaw.pdf
+5.	https://tr.wikipedi0.org/wiki/Zipf_yasası
+6.	https://www.nuget.org/packages/NZemberek/
+7.	https://lvcharts.net/
+8.	https://www.nuget.org/packages/iTextSharp/

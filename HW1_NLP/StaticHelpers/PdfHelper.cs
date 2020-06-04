@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HW1_NLP.DescriptiveClassess;
+using ZipfLaw_NLP.DescriptiveClassess;
 using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-namespace HW1_NLP.StaticHelpers
+namespace ZipfLaw_NLP.StaticHelpers
 {
     public static class PdfHelper
     {

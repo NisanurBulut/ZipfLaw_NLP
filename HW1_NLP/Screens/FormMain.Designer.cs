@@ -1,4 +1,4 @@
-﻿namespace HW1_NLP.Screens
+﻿namespace ZipfLaw_NLP.Screens
 {
     partial class FormMain
     {
