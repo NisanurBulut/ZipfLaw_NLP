@@ -89,3 +89,8 @@ Türkçe metinde her kelime sayılmış ve kullanım sıklığına göre artan s
 Türkçe metinde, üzerinde araştırma yapılan tekil olmayan 55449 adet kelime bulunmuştur ve  tekil kelime sayısı 13088olarak belirlenmiştir. Bu kelimeler üzerinde kök ayrımı yapıldığında benzersiz olan kök sayısı 2340 olarak saptanmıştır. Köklerde kendi içlerinde sıfat-kök, isim-kök, edat-kök,zamir-kök, bağlaç-kök,zaman-kök,soru-kök,ünlem-kök,imek-kök,yankı-kök,sayı-kök gibi türleriyle sınıflandırılmış ve sayılmıştır.
 
 ![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/Anlatim.jpg)
+
+
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran.jpg)
+
+Türkçe metinde geçem kelime kökleri sayıldıktan sonra, en çok kullanılan kök için sıralama 1 den başlayacak şekilde derecelendirilmiştir. Kullanım sıklığının, derecesiyle çarpımı sonucunda elde edilen sabit sayı ilk 30 kelime için kesinlikle aynı değildir ancak grafikten de anlaşılacağı üzere yakın değerlere sahiptir.
