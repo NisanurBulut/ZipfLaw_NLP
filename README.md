@@ -9,14 +9,14 @@ Zipf’e göre, içeriği ve dili fark etmeksizin, bir metindeki kelimeleri kull
 
 Zipf’in bulgularına göre sözcüklerin büyük çoğunluğu çok nadiren kullanılırken az sayıda birtakım sözcük her zaman kullanılır. Yasa yalnızca bir insan diline ait değildir şimdiye değin içeriği pek çok farklı konuda olan pek çok farklı dildeki metinlerde denenmiştir. Sonrasında fark edilmiştir ki, Zipf yasası insanların gelir dağılımlarına ya da şehir nüfus oranlarına uygulandığında da aynı sonucu vermiştir. Örneğin, Bir ülkedeki en çok nüfusa sahip şehir genellikle bir sonrakinin iki katı kadardır.[2]
 
-![İstatistik](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/istatistik1.png)
+![İstatistik](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/istatistik1.png)
 
 Birleşik Devletler’deki nüfusa göre en üst sıralarda yer alan şehirlere şöyle bir bakldığında 2010 nüfus sayımında ABD’deki en büyük şehir olan New York’un nüfusu 8.175.133 iken  ikinci sıradaki Los Angeles’ın nüfusu 3.792.621 ve  sonraki üç sırada Chicago, Houston ve Philadelphia yer aldığı görülür. Şehirlerin nüfus sayıları sırasıyla 2.695.598, 2.100.263 ve 1.526.006’dır. Sayıların tam olmadığını açıkça görülmektedir fakat istatistiksel olarak bakıldığında Zipf’in öngörülerini kayda değer biçimde tutar. Yasanın sağlandığını görmek amacıyla, logaritmik fonksiyonda çizilebilir.
 
 Zipf yasasının, şehir büyüklükleri, nüfus oranları ya da metinlerde geçen kelime anlam sıklığındaki uygunluğu gibi daha pek çok alanda doğruluğunun ortaya çıkma sebebi halen bilinmektedir Zipf Yasası birbirimizle iletişim kurma, ticaret yapma ve topluluk oluşturma yöntemlerimizi sağlama bağlayan temel bir toplumsal dinamik kuralın belki de sadece bir yönüdür.[3]
 
 ## Zipf Yasası Uygulama Anlatım
-Bir metindeki benzeri olmayan kelimeler, yani bir kelimeyi birden fazla kez saymamak şartıyla, metinde kaç kez geçtiği sayılır. 
+Bir metindeki benzeri olmayan kelimeler, yani bir kelimeyi birden fazla kez saymamak şartıyla, metinde kaç kez geçtiği sayılır.
 Freq(word)=Metinde bir kelimenin kaç kez kullanıldığını gösterir.
 
 Bu sıklık listesine göre, her kelime azalan sırada derecelendirilir. Ençok kullanılan kelimenin derecesi(rank) 1 iken ondan sonra gelen en çok kullanılan kelimenin derecesi(rank) 2 olur. Kelimenin anlamıyla ilgilenmeyiz yalnızca sıklık ve derece değerleriyle ilgileniriz.
@@ -26,11 +26,11 @@ r=derece(rank)
 N=Metinde geçen kelime sayısıdır. Benzersiz kelime sayısı değildir yani bir kelime metin içinde bir den fazla geçebilir ve sayıma dahil edilir.
 
 Prob(r) = freq(r) / N   Zipf  yasasına göre;
-r * Prob(r) = A 
+r * Prob(r) = A
 
 Bu formüle göre,  A sabit bir sayıdır ve çoğunlukla 0.01 değerini alır. Zipf yasası istatistiksel bir çıkarımdır her zaman aynı değeri verir şeklinde kesin bir çıkarımı yoktur ancak her zaman yakınsal sonuçlar vermesi beklenir.
 
-Prob(r)=freq(r)/N formülünü dikkate alır ve 
+Prob(r)=freq(r)/N formülünü dikkate alır ve
 </br><b>Zipf yasasını yeniden yazarsak ;</b>
 
 r * freq(r) = A * N formülü elde edilir.
@@ -44,22 +44,22 @@ Zipf yasasını uygulayacak olursak, elde etmemiz gereken ilk şey  freq(r) değ
 - Wikipedia’dan temin edilen Amerika’daki en kalabalık ilk kırk şehrin 2015 nüfuslarının gösterimi[6]
 
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/sehir-dagilim.jpg)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/sehir-dagilim.jpg)
 
 - TÜİK’in sunduğu Adrese Dayalı Nüfus Kayıt Sistemi verilerinden alınan Türkiye illerinin 2017 nüfus sonuçları
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/sehir-dagilim.jpg)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/sehir-dagilim.jpg)
 
 Birinci sırada 15 milyon nüfus değeriyle İstanbul vardır. İkinci sırada ki Ankara’nın nüfus oranı 7.5 milyon olması beklenirken 5.5 milyon değerindedir. Ama 3. Sırada İzmir 4.2 milyon değeriyle üçte bir oranına yaklaşır. Onuncu sıradaki Kocaeli 1,5 milyonluk nüfusuyla 15 milyonun onda birini, yirminci sıradaki Aydın 750 binlik nüfusuyla İstanbul nüfusunun yirmide birini tam isabetle tutturur.
 
 - Ak Parti resmi sitesinden alınan seçim beyannamesi
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/akparti-beyanname.jpg)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/akparti-beyanname.jpg)
 
-AK Parti beyannamesinde geçen tüm kelimelerin sayısı: 90800. Tekrar eden kelimeleri çıkarttığımızda 17644 tekil kelime kalır. Tüm kelimeler geçiş sıklıklarına göre dizildiklerinde en çok kullanılan ilk on kelimenin “ve” (3798), “bir” (1008), “ile” (676), “bu” (620), “için” (597), “olarak” (511), “daha” (463), “yılında” (453), “olan” (402), “devam” (318) olur. Bu metnin de Zipf Kanunu’na uyduğu söylenebilir. 
+AK Parti beyannamesinde geçen tüm kelimelerin sayısı: 90800. Tekrar eden kelimeleri çıkarttığımızda 17644 tekil kelime kalır. Tüm kelimeler geçiş sıklıklarına göre dizildiklerinde en çok kullanılan ilk on kelimenin “ve” (3798), “bir” (1008), “ile” (676), “bu” (620), “için” (597), “olarak” (511), “daha” (463), “yılında” (453), “olan” (402), “devam” (318) olur. Bu metnin de Zipf Kanunu’na uyduğu söylenebilir.
 
 - CHP resmi sitesinden alınan seçim beyannamesi
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/chp-beyanname.jpg)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/chp-beyanname.jpg)
 
 CHP beyannamesinde toplam 30622 kelime vardır. Tekrarsız kelime sayısı 8904’tür. CHP beyannamesinde en sık kullanılan ilk on kelimenin kullanım sıklıkları şöyle sıralanır: “ve” (1589), “bir” (466), “için” (217), “sağlayacağız” (199), “tüm” (182), “bu” (168), “ile” (156), “kamu” (149), “eğitim” (122), “iş” (120).  Bu metin de genel olarak Zipf Kanunu’na uyar. Her ne kadar ikinci sıradaki kelime olan “bir” beklenenden az görülse de on, yirmi, otuz ve kırkıncı sıradaki kelimeler kanununca öngörülen sayılara yakın sıklıkta kullanılmaktadır.
 
@@ -89,23 +89,23 @@ Türkçe metinde her kelime sayılmış ve kullanım sıklığına göre artan s
 
 Türkçe metinde, üzerinde araştırma yapılan tekil olmayan 55449 adet kelime bulunmuştur ve  tekil kelime sayısı 13088olarak belirlenmiştir. Bu kelimeler üzerinde kök ayrımı yapıldığında benzersiz olan kök sayısı 2340 olarak saptanmıştır. Köklerde kendi içlerinde sıfat-kök, isim-kök, edat-kök,zamir-kök, bağlaç-kök,zaman-kök,soru-kök,ünlem-kök,imek-kök,yankı-kök,sayı-kök gibi türleriyle sınıflandırılmış ve sayılmıştır.
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/Anlatim.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/Anlatim.JPG)
 
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/anaEkran.JPG)
 
 Türkçe metinde geçem kelime kökleri sayıldıktan sonra, en çok kullanılan kök için sıralama 1 den başlayacak şekilde derecelendirilmiştir. Kullanım sıklığının, derecesiyle çarpımı sonucunda elde edilen sabit sayı ilk 30 kelime için kesinlikle aynı değildir ancak grafikten de anlaşılacağı üzere yakın değerlere sahiptir.
 
 ## <b>	Türkçe Metin Üzerinde r*(f/N) Gösterimi</b>
 Zipf yasası anlatımı bölümünde, formül yeniden yazıldığında, r * freq(r) = A * N formülü elde edilir denmişti. Bu yeniden yazımın program tarafından gerçekleştiriminde dolaylı yoldan yine sabit bir A sayısının olduğu gösterilmeye çalışılmıştır. Kelime köklerinin sıklıklarının, metinde ki tekil kelime sayısına bölümünün, dereceyle çarpılması işlemi sonucu bulunan ondalık değerler 4 basamak olacak şekilde yuvarlanmıştır. Kesin aynı değeri göstermesini beklememekle birlikte yakın değerlerin bulunması hedeflenmiştir.
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran2.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/anaEkran2.JPG)
 
 Grafik dikkatlice incelendiğinde, bulunan ondalık değerlerin birbirlerine kesin eşit değerde olmadığı halde yakın değerlerde olduğu görülür.
 ## <b>	Türkçe Metin Üzerinde f/r Gösterimi</b>
 Kelime köklerini kullanım sıklıklarına göre derecelendirip, sıklık sayısını derecesine böldüğümüzde elde edilen değerlerin katlı bir örüntü oluşturması beklenir. Sonuçların kesin aynı kat değerlerinde olmasa dahi yakın değerlere sahip olması beklenir.
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran3.JPG)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/anaEkran3.JPG)
 
 Grafik incelendiğinde, birinci sıradaki “da” kökü 495 oran değerine sahipken ikinci sıradaki  “ama” 280,5 oran değerine sahiptir. Üçüncü sıradaki “de” 152, dördüncü sıradaki “ne” 77,75 değerindedir.
 
@@ -115,7 +115,7 @@ Her kelime, eklerine Zemberek kütüphanesi yardımıyla eklerine ayrılmıştı
 
 Ekranın sol tarafında ekler türlerine bağlı olarak adetsel anlamda listelenmiştir. Ekranın ortasındaki daire grafiği ise eklerin zipf yasasına uygunluğunu göstermektedir. Birinci sıradaki ek neredeyse ikinci sıradaki ekin iki katıyken üçüncü sıradaki ekin üç katıdır. Sıra sıklık örüntüsü kesin sayılarla gösterilemese dahi yakın değerlere yine ulaşılmıştır. Ekranın en sağ tarafında ise, daire grafiğine ait etiket gösterimi yer almaktadır. Grafiği oluşturan ilk 30 değerine elde edimine dair kullanılan f/r formülü de dinamik olarak yazılmıştır.
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran4.png)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/anaEkran4.png)
 
 ## <b>İngilizce Metin Üzerinde f/r Gösterimi</b>
 
@@ -125,7 +125,7 @@ Bulunan sonuçlar, değerlendirildiğinde yine kesin katlı bir örüntü elde e
 
 Zipf yasasının İngilizce metin üzerindeki sıra sıklık dağılımına dair grafik gösterimi aşağıda ki gibidir:
 
-![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/HW1_NLP/Photos/anaEkran5.png)
+![](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/ZipfLawNLP/Photos/anaEkran5.png)
 
 # <b> Sonuç </b>
 
@@ -138,7 +138,7 @@ Bu sıra sıklık kuralının sebebi olarak genlerimizde gizlenmiş olan seçim 
 
 Yalnız şu bir gerçektir ki zipf yasasının işleme mekanizmasının çözülmesi, insan eğilimlerinin ne olduğundan çok daha fazlasını ön görebilecektir.
 
-<i>“Tabiat kanunları tanrının eliyle matematik dilinde yazılmışlardır." 
+<i>“Tabiat kanunları tanrının eliyle matematik dilinde yazılmışlardır."
 "Tabiatı anlamak için onun yazıldığı dili anlamanız gerekir ve o dil de matematiktir.”
 
  Galileo Galilei</i>
