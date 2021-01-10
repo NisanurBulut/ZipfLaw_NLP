@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZipfLaw_NLP.DescriptiveClassess;
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using ZipfLaw_NLP.DescriptiveClassess;
 namespace ZipfLaw_NLP.StaticHelpers
 {
     public static class PdfHelper

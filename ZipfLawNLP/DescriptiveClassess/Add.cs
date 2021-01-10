@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZipfLaw_NLP.DescriptiveClassess
+﻿namespace ZipfLaw_NLP.DescriptiveClassess
 {
-   public class Add
+    public class Add
     {
 
         public int Rank { get; set; } = 0;

@@ -1,13 +1,11 @@
-﻿using ZipfLaw_NLP.DescriptiveClassess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using net.zemberek.erisim;
+﻿using net.zemberek.erisim;
 using net.zemberek.tr.yapi;
 using net.zemberek.yapi;
 using net.zemberek.yapi.ek;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ZipfLaw_NLP.DescriptiveClassess;
 
 namespace ZipfLaw_NLP.StaticHelpers
 {
