@@ -1,5 +1,8 @@
 # Zipf Kanunu
 
+## Yıldız Ver! :star:
+Çözümünüzü öğrenmek veya başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
+
 ![Certificate](https://github.com/NisanurBulut/ZipfLaw_NLP/blob/master/NisanurBulut_iceans.JPG)
 
 Doğal dil işleme alanında kelimelerin kullanım sıklıkları, bir kelimenin taşıdığı anlam sayısı, kelimeler arası uzaklıklar gibi unsurların arasında bir ilişki olduğu fark edilmiştir. Bu anlamdaki ilk çalışmalar, George K. Zipf (1902–1950) tarafından yapılmıştır. Zipf bu çalışmalarını 1932 yılında yayınladığı “Selected Studies of the Principle of Relative Frequency in Language” başlıklı makalesiyle yayımlamıştır ve onun adıyla da yasalaşmıştır.[1]
