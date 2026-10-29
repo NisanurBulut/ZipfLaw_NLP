@@ -41,6 +41,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}" />
         <Setter Property="Padding" Value="16,7" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -83,6 +84,7 @@
         <!-- The tab content is a logical child of the TabItem and inherits its font, so only the header gets the title font. -->
         <Setter Property="FontFamily" Value="{StaticResource Font.Body}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush.Ink}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
@@ -102,6 +104,22 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!-- Table cells: a golden veil under the mouse and the crimson of the house when selected (instead of the system accent blue).
+         The cells paint it, because the DataGrid sets the row background itself and a row style could not change it. -->
+    <Style x:Key="TableCell" TargetType="DataGridCell">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Brush.Hover}" />
+            </DataTrigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary}" />
+                <Setter Property="Foreground" Value="{DynamicResource Brush.OnPrimary}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="TableHeader" TargetType="DataGridColumnHeader">
