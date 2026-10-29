@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 150" width="880" height="150" role="img"
+     aria-label="Zipfomancy: Zipf's law, with a little magic">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B0A0A"/>
+      <stop offset="1" stop-color="#4A0F10"/>
+    </linearGradient>
+    <linearGradient id="logoBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8A0A12"/>
+      <stop offset="1" stop-color="#2B0708"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6DC82"/>
+      <stop offset="1" stop-color="#C8961B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6CC" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFD166" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flame" cx="0.5" cy="0.65" r="0.55">
+      <stop offset="0" stop-color="#FFFFE0"/>
+      <stop offset="0.45" stop-color="#FFC83D"/>
+      <stop offset="1" stop-color="#FF8A00" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="titleGlow" x="-10%" y="-40%" width="120%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="880" height="150" rx="18" fill="url(#bg)"/>
+  <rect x="2" y="2" width="876" height="146" rx="16" fill="none" stroke="#D3A625" stroke-width="2"/>
+
+  <!-- the logo, on the left -->
+  <g transform="translate(22 13) scale(0.48)">
+    <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#logoBg)" stroke="#D3A625" stroke-width="6"/>
+    <g fill="url(#gold)">
+      <rect x="34" y="62" width="30" height="150" rx="5"/>
+      <rect x="72" y="137" width="30" height="75" rx="5"/>
+      <rect x="110" y="162" width="30" height="50" rx="5"/>
+      <rect x="148" y="175" width="30" height="37" rx="5"/>
+      <rect x="186" y="182" width="30" height="30" rx="5"/>
+    </g>
+    <path d="M49 52 C58 112 84 128 125 148 S190 168 216 170" fill="none" stroke="#FFF3C4" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+    <circle cx="49" cy="38" r="26" fill="url(#glow)"/>
+    <path d="M49 20 L53.5 33.5 L67 38 L53.5 42.5 L49 56 L44.5 42.5 L31 38 L44.5 33.5 Z" fill="#FFF6CC"/>
+    <path d="M200 61 L202 68 L209 70 L202 72 L200 79 L198 72 L191 70 L198 68 Z" fill="#FFF6CC"/>
+    <path d="M226 98 L227.5 102.5 L232 104 L227.5 105.5 L226 110 L224.5 105.5 L220 104 L224.5 102.5 Z" fill="#FFF6CC"/>
+  </g>
+
+  <!-- the name and the tagline, next to the logo -->
+  <text x="168" y="84" font-family="Georgia, 'Palatino Linotype', serif" font-size="64" font-style="italic" fill="#F2D06B" filter="url(#titleGlow)">Zipfomancy</text>
+  <text x="172" y="120" font-family="Georgia, 'Palatino Linotype', serif" font-size="20" fill="#F6E7C1" opacity="0.92">Zipf's law, with a little magic.</text>
+
+  <!-- three candles on the right -->
+  <g>
+    <circle cx="727" cy="74" r="26" fill="url(#glow)" opacity="0.55"/>
+    <rect x="720" y="88" width="14" height="40" rx="2" fill="#F4EBD0"/>
+    <ellipse cx="727" cy="74" rx="6" ry="11" fill="url(#flame)"/>
+    <circle cx="777" cy="62" r="26" fill="url(#glow)" opacity="0.55"/>
+    <rect x="770" y="76" width="14" height="52" rx="2" fill="#F4EBD0"/>
+    <ellipse cx="777" cy="62" rx="6" ry="11" fill="url(#flame)"/>
+    <circle cx="827" cy="80" r="26" fill="url(#glow)" opacity="0.55"/>
+    <rect x="820" y="94" width="14" height="34" rx="2" fill="#F4EBD0"/>
+    <ellipse cx="827" cy="80" rx="6" ry="11" fill="url(#flame)"/>
+  </g>
+</svg>
