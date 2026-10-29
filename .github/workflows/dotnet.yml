@@ -1,0 +1,44 @@
+# Builds and tests the WPF rewrite (src/ + tests/). The legacy WinForms project in ZipfLawNLP/ is
+# .NET Framework 4.6.1 with old NuGet packages, so CI does not build it.
+
+name: .NET CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    # WPF only builds on Windows.
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+    - run: dotnet restore ZipfLaw.sln
+    - run: dotnet build ZipfLaw.sln --no-restore --configuration Release
+    - run: dotnet test ZipfLaw.sln --no-build --configuration Release
+
+  label-hotfix:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Label hotfix PR
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'hotfix')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels -f "labels[]=bug"
+      - name: Label dev PR
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'dev')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels -f "labels[]=enhancement"
+      - name: Label major PR
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'major')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels -f "labels[]=breaking"
