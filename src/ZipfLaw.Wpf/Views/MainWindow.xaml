@@ -9,7 +9,11 @@
         FontFamily="{StaticResource Font.Body}" FontSize="15">
 
     <Window.Resources>
-        <Style x:Key="NumberCell" TargetType="TextBlock">
+        <Style x:Key="TextCell" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="6,0,0,0" />
+        </Style>
+        <Style x:Key="NumberCell" TargetType="TextBlock" BasedOn="{StaticResource TextCell}">
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Margin" Value="0,0,10,0" />
         </Style>
@@ -71,15 +75,29 @@
         <!-- Choose a text and a language, then cast the spell. -->
         <Border x:Name="Controls" Grid.Row="1" Style="{StaticResource Parchment}" Padding="14,10" Margin="0,0,0,14" Opacity="0">
             <DockPanel>
-                <Button DockPanel.Dock="Right" Content="✦  Büyüyü Başlat" FontSize="17" Command="{Binding AnalyzeCommand}" />
+                <Button DockPanel.Dock="Right" FontSize="17" Command="{Binding AnalyzeCommand}" AutomationProperties.Name="Büyüyü Başlat">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Spark}" Width="16" Height="16" Margin="0,0,10,0"
+                              Stroke="{DynamicResource Brush.OnPrimary}" Fill="{DynamicResource Brush.OnPrimary}" />
+                        <TextBlock Text="Büyüyü Başlat" />
+                    </StackPanel>
+                </Button>
                 <!-- Each label stays with its box when the bar wraps on a narrow window. -->
                 <WrapPanel VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="0,3,22,3">
+                        <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Book}" Margin="0,0,6,0" />
                         <TextBlock Text="Metin" Foreground="{DynamicResource Brush.Ink}" VerticalAlignment="Center" Margin="0,0,8,0" />
                         <ComboBox Width="290" ItemsSource="{Binding Books}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedBook}" Margin="0,0,6,0" />
-                        <Button Content="Başka metin…" Padding="12,5" Click="OnBrowseClick" />
+                        <Button Padding="12,5" Click="OnBrowseClick" AutomationProperties.Name="Başka metin">
+                            <StackPanel Orientation="Horizontal">
+                                <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Folder}" Width="16" Height="16" Margin="0,0,6,0"
+                                      Stroke="{DynamicResource Brush.OnPrimary}" />
+                                <TextBlock Text="Başka metin…" />
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Globe}" Margin="0,0,6,0" />
                         <TextBlock Text="Dil" Foreground="{DynamicResource Brush.Ink}" VerticalAlignment="Center" Margin="0,0,8,0" />
                         <ComboBox Width="105" ItemsSource="{Binding Languages}" DisplayMemberPath="Name"
                                   SelectedValuePath="Language" SelectedValue="{Binding Language}" />
@@ -94,35 +112,53 @@
                 <TranslateTransform x:Name="CardSlide" />
             </Border.RenderTransform>
             <TabControl Background="Transparent" BorderThickness="0" Padding="0" Foreground="{DynamicResource Brush.Ink}">
-                <TabItem Header="Özet">
+                <TabItem AutomationProperties.Name="Özet">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Summary}" Width="20" Height="20" Margin="0,0,8,0" />
+                            <TextBlock Text="Özet" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,14,18,0">
                             <StackPanel Orientation="Horizontal">
                                 <Border Style="{StaticResource StatCard}">
                                     <StackPanel>
-                                        <TextBlock Text="Toplam kelime" Foreground="{DynamicResource Brush.Ink}" Opacity="0.75" FontSize="13" />
+                                        <StackPanel Orientation="Horizontal" Opacity="0.75">
+                                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Lines}" Width="14" Height="14" Margin="0,0,6,0" />
+                                            <TextBlock Text="Toplam kelime" Foreground="{DynamicResource Brush.Ink}" FontSize="13" />
+                                        </StackPanel>
                                         <TextBlock Text="{Binding Result.TotalWords, StringFormat=N0}" Foreground="{DynamicResource Brush.Ink}"
                                                    FontFamily="{StaticResource Font.Title}" FontSize="36" />
                                     </StackPanel>
                                 </Border>
                                 <Border Style="{StaticResource StatCard}">
                                     <StackPanel>
-                                        <TextBlock Text="Benzersiz kelime" Foreground="{DynamicResource Brush.Ink}" Opacity="0.75" FontSize="13" />
+                                        <StackPanel Orientation="Horizontal" Opacity="0.75">
+                                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Spark}" Width="14" Height="14" Margin="0,0,6,0" />
+                                            <TextBlock Text="Benzersiz kelime" Foreground="{DynamicResource Brush.Ink}" FontSize="13" />
+                                        </StackPanel>
                                         <TextBlock Text="{Binding Result.UniqueWords, StringFormat=N0}" Foreground="{DynamicResource Brush.Ink}"
                                                    FontFamily="{StaticResource Font.Title}" FontSize="36" />
                                     </StackPanel>
                                 </Border>
                                 <Border Style="{StaticResource StatCard}">
                                     <StackPanel>
-                                        <TextBlock Text="A = sıra × olasılık (ilk 100 kelime)" Foreground="{DynamicResource Brush.Ink}" Opacity="0.75" FontSize="13" />
+                                        <StackPanel Orientation="Horizontal" Opacity="0.75">
+                                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Sigma}" Width="14" Height="14" Margin="0,0,6,0" />
+                                            <TextBlock Text="A = sıra × olasılık (ilk 100 kelime)" Foreground="{DynamicResource Brush.Ink}" FontSize="13" />
+                                        </StackPanel>
                                         <TextBlock Text="{Binding AverageA, StringFormat=F3}" Foreground="{DynamicResource Brush.Ink}"
                                                    FontFamily="{StaticResource Font.Title}" FontSize="36" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
 
-                            <TextBlock Text="En sık geçen 15 kelime" Foreground="{DynamicResource Brush.Ink}"
-                                       FontFamily="{StaticResource Font.Title}" FontSize="28" Margin="0,16,0,6" />
+                            <StackPanel Orientation="Horizontal" Margin="0,16,0,6">
+                                <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Crown}" Width="24" Height="24" Margin="0,0,10,0" />
+                                <TextBlock Text="En sık geçen 15 kelime" Foreground="{DynamicResource Brush.Ink}"
+                                           FontFamily="{StaticResource Font.Title}" FontSize="28" />
+                            </StackPanel>
                             <ItemsControl ItemsSource="{Binding TopWords}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
@@ -166,17 +202,24 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <TabItem Header="Tablo">
+                <TabItem AutomationProperties.Name="Tablo">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Table}" Width="20" Height="20" Margin="0,0,8,0" />
+                            <TextBlock Text="Tablo" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
                     <DataGrid ItemsSource="{Binding Result.Words}" Margin="0,14,0,0"
                               AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
                               Background="Transparent" RowBackground="Transparent" AlternationCount="2"
                               AlternatingRowBackground="{DynamicResource Brush.PanelAlt}"
                               Foreground="{DynamicResource Brush.Ink}" BorderThickness="0"
-                              GridLinesVisibility="None" HeadersVisibility="Column"
-                              ColumnHeaderStyle="{StaticResource TableHeader}">
+                              GridLinesVisibility="None" HeadersVisibility="Column" RowHeight="36"
+                              ColumnHeaderStyle="{StaticResource TableHeader}"
+                              CellStyle="{StaticResource TableCell}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Sıra" Binding="{Binding Rank}" ElementStyle="{StaticResource NumberCell}" />
-                            <DataGridTextColumn Header="Kelime" Binding="{Binding Word}" Width="*" />
+                            <DataGridTextColumn Header="Kelime" Binding="{Binding Word}" Width="*" ElementStyle="{StaticResource TextCell}" />
                             <DataGridTextColumn Header="Sayı" Binding="{Binding Count, StringFormat=N0}" ElementStyle="{StaticResource NumberCell}" />
                             <DataGridTextColumn Header="Olasılık" Binding="{Binding Probability, StringFormat=F5}" ElementStyle="{StaticResource NumberCell}" />
                             <DataGridTextColumn Header="Sıra × Sayı" Binding="{Binding RankTimesCount, StringFormat=N0}" ElementStyle="{StaticResource NumberCell}" />
@@ -185,7 +228,13 @@
                     </DataGrid>
                 </TabItem>
 
-                <TabItem Header="Grafik">
+                <TabItem AutomationProperties.Name="Grafik">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Path Style="{StaticResource Icon}" Data="{StaticResource Icon.Chart}" Width="20" Height="20" Margin="0,0,8,0" />
+                            <TextBlock Text="Grafik" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid Margin="0,14,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />

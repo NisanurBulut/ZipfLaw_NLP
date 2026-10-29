@@ -26,6 +26,7 @@ const double recordSeconds = 17;
 const string englishBook = "Harry Potter and the Sorcerer's Stone (English)";
 
 using var process = Process.Start(exePath) ?? throw new InvalidOperationException("Could not start " + exePath);
+AppDomain.CurrentDomain.UnhandledException += (_, _) => process.Kill(); // do not leave the app running if the script fails
 
 // Recording starts as soon as the window exists, so the opening animation is part of the GIF.
 AutomationElement? found = null;
@@ -79,10 +80,17 @@ void SelectTab(string name)
 void ChooseBook(string title)
 {
     var books = window.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ComboBox))[0];
+    Console.WriteLine("combo: " + books.Current.Name + " / " + string.Join(",", books.GetSupportedPatterns().Select(p => p.ProgrammaticName)));
     var expand = (ExpandCollapsePattern)books.GetCurrentPattern(ExpandCollapsePattern.Pattern);
     expand.Expand();
     Thread.Sleep(300);
-    var item = books.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.NameProperty, title));
+    // The drop-down list is its own top-level window, so it is not below the combo box in the tree.
+    // An item is named after its object (a record), so the title is only part of the name.
+    var item = AutomationElement.RootElement
+        .FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ListItem))
+        .Cast<AutomationElement>()
+        .First(candidate => candidate.Current.Name.Contains(title));
+    Console.WriteLine("item: " + item.Current.Name + " / " + string.Join(",", item.GetSupportedPatterns().Select(p => p.ProgrammaticName)));
     ((SelectionItemPattern)item.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
     expand.Collapse();
 }
