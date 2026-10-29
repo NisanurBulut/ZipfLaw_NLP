@@ -1,0 +1,114 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Shared look. The colours come from Colors.xaml. -->
+
+    <!-- Gabriola ships with Windows and has a storybook look; Palatino for the text. -->
+    <FontFamily x:Key="Font.Title">Gabriola, Palatino Linotype, Georgia</FontFamily>
+    <FontFamily x:Key="Font.Body">Palatino Linotype, Georgia</FontFamily>
+
+    <Style x:Key="PageTitle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Title}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Accent}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <!-- A parchment panel. -->
+    <Style x:Key="Parchment" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource Brush.Panel}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="24" ShadowDepth="4" Opacity="0.6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StatCard" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource Brush.PanelAlt}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="Margin" Value="0,0,12,0" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Body}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.OnPrimary}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Primary}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}" />
+        <Setter Property="Padding" Value="16,7" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1.5" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                        <Border.Effect>
+                            <!-- A golden glow that fades in under the mouse. -->
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="18" Opacity="0" Color="{DynamicResource Color.Accent}" />
+                        </Border.Effect>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Chrome" Storyboard.TargetProperty="Effect.Opacity" To="1" Duration="0:0:0.25" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Chrome" Storyboard.TargetProperty="Effect.Opacity" To="0" Duration="0:0:0.25" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Tab headers: plain text with a coloured underline under the selected tab. -->
+    <Style TargetType="TabItem">
+        <!-- The tab content is a logical child of the TabItem and inherits its font, so only the header gets the title font. -->
+        <Setter Property="FontFamily" Value="{StaticResource Font.Body}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Ink}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="Header" Padding="18,0,18,2" Margin="0,0,6,0" Background="Transparent"
+                            BorderBrush="Transparent" BorderThickness="0,0,0,3">
+                        <ContentPresenter ContentSource="Header" TextElement.Foreground="{TemplateBinding Foreground}"
+                                          TextElement.FontFamily="{StaticResource Font.Title}" TextElement.FontSize="26" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Header" Property="Background" Value="{DynamicResource Brush.PanelAlt}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Header" Property="BorderBrush" Value="{DynamicResource Brush.Primary}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TableHeader" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{DynamicResource Brush.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.OnPrimary}" />
+        <Setter Property="FontFamily" Value="{StaticResource Font.Body}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="10,7" />
+    </Style>
+</ResourceDictionary>
