@@ -22,7 +22,8 @@ using System.Windows.Automation;
 var exePath = Path.GetFullPath(args.Length > 0 ? args[0] : "src/ZipfLaw.Wpf/bin/Debug/net10.0-windows/ZipfLaw.Wpf.exe");
 var outPath = Path.GetFullPath(args.Length > 1 ? args[1] : "docs/images/zipfomancy-demo.gif");
 var targetWidth = args.Length > 2 ? int.Parse(args[2]) : 880;
-const double recordSeconds = 17;
+var shortRun = args.Length > 4 && args[4] == "short"; // a quicker tour for social media posts
+var recordSeconds = shortRun ? 14.0 : 17.0;
 const string englishBook = "Harry Potter and the Sorcerer's Stone (English)";
 
 using var process = Process.Start(exePath) ?? throw new InvalidOperationException("Could not start " + exePath);
@@ -45,15 +46,32 @@ for (var attempt = 0; attempt < 50 && found is null; attempt++)
 var window = found ?? throw new InvalidOperationException("The window did not appear.");
 var handle = new IntPtr(window.Current.NativeWindowHandle);
 
+// Optional window size such as 1280x720 (a 16:9 picture for a post).
+if (args.Length > 3)
+{
+    var size = args[3].Split('x');
+    ((TransformPattern)window.GetCurrentPattern(TransformPattern.Pattern)).Resize(int.Parse(size[0]), int.Parse(size[1]));
+    Thread.Sleep(600);
+}
+
 // What happens when: seconds after the start of the recording, and the action.
-var script = new Queue<(double At, Action Do)>(
-[
-    (4.0, () => SelectTab("Tablo")),
-    (6.5, () => SelectTab("Grafik")),
-    (10.5, () => ChooseBook(englishBook)),
-    (11.3, ClickAnalyze),
-    (14.0, () => SelectTab("Özet")),
-]);
+(double At, Action Do)[] steps = shortRun
+    ?
+    [
+        (3.3, () => SelectTab("Tablo")),
+        (5.0, () => SelectTab("Grafik")),
+        (8.2, () => ChooseBook(englishBook)),
+        (8.9, ClickAnalyze),
+    ]
+    :
+    [
+        (4.0, () => SelectTab("Tablo")),
+        (6.5, () => SelectTab("Grafik")),
+        (10.5, () => ChooseBook(englishBook)),
+        (11.3, ClickAnalyze),
+        (14.0, () => SelectTab("Özet")),
+    ];
+var script = new Queue<(double At, Action Do)>(steps);
 
 var frames = new List<byte[]>();
 var times = new List<double>();

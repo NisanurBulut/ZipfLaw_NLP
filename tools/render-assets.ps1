@@ -1,4 +1,5 @@
-# Renders tools/logo.xaml to docs/images/zipfomancy-logo.png (512 px) and src/ZipfLaw.Wpf/Assets/zipfomancy.ico (the app icon).
+# Renders tools/logo.xaml to docs/images/zipfomancy-logo.png (512 px) and src/ZipfLaw.Wpf/Assets/zipfomancy.ico (the app icon),
+# and tools/social.xaml to docs/images/zipfomancy-social.png (1280 x 640, the GitHub social preview).
 # Run with: powershell -STA -File tools/render-assets.ps1
 Add-Type -AssemblyName PresentationCore, PresentationFramework, WindowsBase
 
@@ -27,6 +28,19 @@ function Save-Logo($size, $path) {
 }
 
 Save-Logo 512 (Join-Path $images 'zipfomancy-logo.png')
+
+# GitHub social preview: 1280 x 640 px (Settings > General > Social preview)
+$social = [System.Windows.Markup.XamlReader]::Load([System.IO.File]::OpenRead((Join-Path $PSScriptRoot 'social.xaml')))
+$social.Measure((New-Object System.Windows.Size 1280, 640))
+$social.Arrange((New-Object System.Windows.Rect 0, 0, 1280, 640))
+$social.UpdateLayout()
+$bitmap = New-Object System.Windows.Media.Imaging.RenderTargetBitmap 1280, 640, 96, 96, ([System.Windows.Media.PixelFormats]::Pbgra32)
+$bitmap.Render($social)
+$encoder = New-Object System.Windows.Media.Imaging.PngBitmapEncoder
+$encoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($bitmap))
+$stream = [System.IO.File]::Create((Join-Path $images 'zipfomancy-social.png'))
+$encoder.Save($stream)
+$stream.Close()
 
 # Icon with PNG-compressed entries
 $sizes = 16, 32, 48, 64, 128, 256
