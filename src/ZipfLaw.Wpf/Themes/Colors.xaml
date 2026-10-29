@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Scarlet and gold on dark wood and parchment. All colours of the app live here. -->
+    <Color x:Key="Color.Accent">#D3A625</Color>
+
+    <LinearGradientBrush x:Key="Brush.Bg" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#120505" Offset="0" />
+        <GradientStop Color="#3A0D0D" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Brush.Panel" Color="#F3E6C4" />
+    <SolidColorBrush x:Key="Brush.PanelAlt" Color="#E8D7AC" />
+    <SolidColorBrush x:Key="Brush.Ink" Color="#2B1B0E" />
+    <SolidColorBrush x:Key="Brush.Primary" Color="#740001" />
+    <SolidColorBrush x:Key="Brush.OnPrimary" Color="#F6E7C1" />
+    <SolidColorBrush x:Key="Brush.Accent" Color="#D3A625" />
+    <!-- Line colours for the plot: they have to stand out on the parchment. -->
+    <SolidColorBrush x:Key="Brush.Line" Color="#740001" />
+    <SolidColorBrush x:Key="Brush.Ideal" Color="#A9780A" />
+    <LinearGradientBrush x:Key="Brush.Bar" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#740001" Offset="0" />
+        <GradientStop Color="#D3A625" Offset="1" />
+    </LinearGradientBrush>
+</ResourceDictionary>
