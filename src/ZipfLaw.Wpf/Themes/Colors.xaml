@@ -13,6 +13,8 @@
     <SolidColorBrush x:Key="Brush.Primary" Color="#740001" />
     <SolidColorBrush x:Key="Brush.OnPrimary" Color="#F6E7C1" />
     <SolidColorBrush x:Key="Brush.Accent" Color="#D3A625" />
+    <!-- Golden veil for a table row under the mouse. -->
+    <SolidColorBrush x:Key="Brush.Hover" Color="#40D3A625" />
     <!-- Line colours for the plot: they have to stand out on the parchment. -->
     <SolidColorBrush x:Key="Brush.Line" Color="#740001" />
     <SolidColorBrush x:Key="Brush.Ideal" Color="#A9780A" />
