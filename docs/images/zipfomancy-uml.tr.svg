@@ -1,0 +1,131 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 710' width='1000' height='710' role='img' aria-label='Zipfomancy class diagram: MainWindow and ZipfPlot (view), MainViewModel, Book and BarRow (view model), ZipfAnalyzer, ZipfResult and WordStat (core)'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#1B0A0A'/><stop offset='1' stop-color='#3A0D0D'/></linearGradient>
+    <marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='10' markerHeight='10' orient='auto'><path d='M1,1 L9,5 L1,9' fill='none' stroke='#F2D06B' stroke-width='1.8'/></marker>
+    <marker id='filled' viewBox='0 0 12 12' refX='1' refY='6' markerWidth='13' markerHeight='13' orient='auto'><path d='M1,6 L6,2 L11,6 L6,10 Z' fill='#F2D06B' stroke='#F2D06B'/></marker>
+    <marker id='hollow' viewBox='0 0 12 12' refX='1' refY='6' markerWidth='13' markerHeight='13' orient='auto'><path d='M1,6 L6,2 L11,6 L6,10 Z' fill='#3A0D0D' stroke='#F2D06B' stroke-width='1.6'/></marker>
+  </defs>
+  <rect width='1000' height='710' rx='18' fill='url(#bg)'/>
+  <rect x='3' y='3' width='994' height='704' rx='16' fill='none' stroke='#D3A625' stroke-width='2'/>
+  <text x='500' y='44' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='28' font-style='italic' fill='#F2D06B'>Zipfomancy · Sınıf Diyagramı</text>
+  <path d='M300,26 L302.5,34 L310.5,36.5 L302.5,39 L300,47 L297.5,39 L289.5,36.5 L297.5,34 Z' fill='#FFF6CC'/>
+  <path d='M700,26 L702.5,34 L710.5,36.5 L702.5,39 L700,47 L697.5,39 L689.5,36.5 L697.5,34 Z' fill='#FFF6CC'/>
+  <text x='160' y='80' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='15' letter-spacing='2' fill='#F6E7C1'>VIEW · Görünüm</text>
+  <rect x='100' y='86' width='120' height='3' rx='1.5' fill='#A3121C'/>
+  <text x='500' y='80' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='15' letter-spacing='2' fill='#F6E7C1'>VIEWMODEL</text>
+  <rect x='440' y='86' width='120' height='3' rx='1.5' fill='#E3A81B'/>
+  <text x='840' y='80' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='15' letter-spacing='2' fill='#F6E7C1'>CORE · Çekirdek</text>
+  <rect x='780' y='86' width='120' height='3' rx='1.5' fill='#2F4EA8'/>
+  <path d='M300,140 L360,140' fill='none' stroke='#F2D06B' stroke-width='2' marker-end='url(#arrow)'/>
+  <text x='330' y='130' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>bağlanır</text>
+  <path d='M160,207 L160,262' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#filled)'/>
+  <text x='170' y='239' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>içerir</text>
+  <path d='M300,330 L330,330 L330,680 L840,680 L840,610' fill='none' stroke='#F2D06B' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#arrow)'/>
+  <text x='585' y='672' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>çizer</text>
+  <path d='M640,150 L700,150' fill='none' stroke='#F2D06B' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#arrow)'/>
+  <text x='670' y='140' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>kullanır</text>
+  <path d='M840,215 L840,262' fill='none' stroke='#F2D06B' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#arrow)'/>
+  <text x='850' y='243' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>üretir</text>
+  <path d='M840,381 L840,428' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#hollow)'/>
+  <text x='850' y='409' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>Words 1..*</text>
+  <path d='M500,375 L500,420' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#hollow)'/>
+  <text x='510' y='402' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>Books 0..*</text>
+  <path d='M640,330 L670,330 L670,609 L640,609' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#hollow)'/>
+  <text transform='translate(687 470) rotate(-90)' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>TopWords 0..*</text>
+  <g>
+    <rect x='20' y='96' width='280' height='111' rx='10' fill='#F6EBCB' stroke='#A3121C' stroke-width='3'/>
+    <path d='M20,128 V106 Q20,96 30,96 H290 Q300,96 300,106 V128 Z' fill='#A3121C'/>
+    <text x='160' y='118' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#F6E7C1'>MainWindow</text>
+    <text x='34' y='151' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>DataContext = MainViewModel</text>
+    <text x='34' y='172' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ OnBrowseClick()</text>
+    <text x='34' y='193' font-family="Consolas, 'Courier New', monospace" font-size='12' font-style='italic' fill='#2B1B0E'>Sekmeler: Özet · Tablo · Grafik</text>
+  </g>
+  <g>
+    <rect x='20' y='262' width='280' height='132' rx='10' fill='#F6EBCB' stroke='#A3121C' stroke-width='3'/>
+    <path d='M20,294 V272 Q20,262 30,262 H290 Q300,262 300,272 V294 Z' fill='#A3121C'/>
+    <text x='160' y='284' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#F6E7C1'>ZipfPlot</text>
+    <text x='34' y='317' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Words : IReadOnlyList&lt;WordStat&gt;</text>
+    <text x='34' y='338' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ LineBrush, IdealBrush : Brush</text>
+    <text x='34' y='359' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'># OnRender(dc)</text>
+    <text x='34' y='380' font-family="Consolas, 'Courier New', monospace" font-size='12' font-style='italic' fill='#2B1B0E'>log-log çizim + çizilme animasyonu</text>
+  </g>
+  <g>
+    <rect x='360' y='96' width='280' height='279' rx='10' fill='#F6EBCB' stroke='#E3A81B' stroke-width='3'/>
+    <path d='M360,128 V106 Q360,96 370,96 H630 Q640,96 640,106 V128 Z' fill='#E3A81B'/>
+    <text x='500' y='118' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#1F1A0B'>MainViewModel</text>
+    <text x='374' y='151' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Books : ObservableCollection&lt;Book&gt;</text>
+    <text x='374' y='172' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Languages : IReadOnlyList&lt;..&gt;</text>
+    <text x='374' y='193' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ SelectedBook : Book</text>
+    <text x='374' y='214' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Language : TextLanguage</text>
+    <text x='374' y='235' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ IsBusy : bool</text>
+    <text x='374' y='256' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Status : string</text>
+    <text x='374' y='277' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Result : ZipfResult?</text>
+    <text x='374' y='298' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ TopWords : IReadOnlyList&lt;BarRow&gt;</text>
+    <text x='374' y='319' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ AverageA : double</text>
+    <text x='374' y='340' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ AnalyzeCommand</text>
+    <text x='374' y='361' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ AddBook(path)</text>
+  </g>
+  <g>
+    <rect x='360' y='420' width='280' height='119' rx='10' fill='#F6EBCB' stroke='#E3A81B' stroke-width='3'/>
+    <path d='M360,460 V430 Q360,420 370,420 H630 Q640,420 640,430 V460 Z' fill='#E3A81B'/>
+    <text x='500' y='435' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='11' font-style='italic' fill='#1F1A0B' opacity='0.85'>«record»</text>
+    <text x='500' y='452' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#1F1A0B'>Book</text>
+    <text x='374' y='483' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Title : string</text>
+    <text x='374' y='504' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Path : string</text>
+    <text x='374' y='525' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Language : TextLanguage</text>
+  </g>
+  <g>
+    <rect x='360' y='560' width='280' height='98' rx='10' fill='#F6EBCB' stroke='#E3A81B' stroke-width='3'/>
+    <path d='M360,600 V570 Q360,560 370,560 H630 Q640,560 640,570 V600 Z' fill='#E3A81B'/>
+    <text x='500' y='575' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='11' font-style='italic' fill='#1F1A0B' opacity='0.85'>«record»</text>
+    <text x='500' y='592' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#1F1A0B'>BarRow</text>
+    <text x='374' y='623' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Rank, Word, Count</text>
+    <text x='374' y='644' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Ratio : double  (0..1)</text>
+  </g>
+  <g>
+    <rect x='700' y='96' width='280' height='119' rx='10' fill='#F6EBCB' stroke='#2F4EA8' stroke-width='3'/>
+    <path d='M700,136 V106 Q700,96 710,96 H970 Q980,96 980,106 V136 Z' fill='#2F4EA8'/>
+    <text x='840' y='111' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='11' font-style='italic' fill='#F1E8D2' opacity='0.85'>«static»</text>
+    <text x='840' y='128' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#F1E8D2'>ZipfAnalyzer</text>
+    <text x='714' y='159' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Analyze(text, language)</text>
+    <text x='714' y='180' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>    : ZipfResult</text>
+    <text x='714' y='201' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>- Normalize(word, language)</text>
+  </g>
+  <g>
+    <rect x='700' y='262' width='280' height='119' rx='10' fill='#F6EBCB' stroke='#2F4EA8' stroke-width='3'/>
+    <path d='M700,302 V272 Q700,262 710,262 H970 Q980,262 980,272 V302 Z' fill='#2F4EA8'/>
+    <text x='840' y='277' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='11' font-style='italic' fill='#F1E8D2' opacity='0.85'>«record»</text>
+    <text x='840' y='294' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#F1E8D2'>ZipfResult</text>
+    <text x='714' y='325' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ TotalWords : int</text>
+    <text x='714' y='346' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ UniqueWords : int</text>
+    <text x='714' y='367' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Words : IReadOnlyList&lt;WordStat&gt;</text>
+  </g>
+  <g>
+    <rect x='700' y='428' width='280' height='182' rx='10' fill='#F6EBCB' stroke='#2F4EA8' stroke-width='3'/>
+    <path d='M700,468 V438 Q700,428 710,428 H970 Q980,428 980,438 V468 Z' fill='#2F4EA8'/>
+    <text x='840' y='443' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='11' font-style='italic' fill='#F1E8D2' opacity='0.85'>«record»</text>
+    <text x='840' y='460' text-anchor='middle' font-family="Georgia, 'Palatino Linotype', serif" font-size='17' font-weight='bold' fill='#F1E8D2'>WordStat</text>
+    <text x='714' y='491' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Rank : int</text>
+    <text x='714' y='512' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Word : string</text>
+    <text x='714' y='533' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Count : int</text>
+    <text x='714' y='554' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ Probability : double</text>
+    <text x='714' y='575' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ RankTimesCount : double</text>
+    <text x='714' y='596' font-family="Consolas, 'Courier New', monospace" font-size='12' fill='#2B1B0E'>+ RankTimesProbability : double</text>
+  </g>
+  <g>
+    <rect x='20' y='440' width='280' height='200' rx='10' fill='#2A0B0B' stroke='#D3A625' stroke-width='1.5'/>
+    <text x='34' y='466' font-family="Georgia, 'Palatino Linotype', serif" font-size='15' font-weight='bold' fill='#F2D06B'>Nasıl okunur?</text>
+    <rect x='34' y='484' width='16' height='16' rx='3' fill='#A3121C'/>
+    <text x='60' y='497' font-family="Georgia, 'Palatino Linotype', serif" font-size='13' fill='#F6E7C1'>Görünüm: XAML ekranları ve çizim</text>
+    <rect x='34' y='508' width='16' height='16' rx='3' fill='#E3A81B'/>
+    <text x='60' y='521' font-family="Georgia, 'Palatino Linotype', serif" font-size='13' fill='#F6E7C1'>ViewModel: ekran durumu, komutlar</text>
+    <rect x='34' y='532' width='16' height='16' rx='3' fill='#2F4EA8'/>
+    <text x='60' y='545' font-family="Georgia, 'Palatino Linotype', serif" font-size='13' fill='#F6E7C1'>Çekirdek: Zipf hesabı (arayüzsüz)</text>
+    <path d='M34,572 L74,572' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#filled)'/>
+    <text x='88' y='576' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>içerir (kompozisyon)</text>
+    <path d='M34,594 L74,594' fill='none' stroke='#F2D06B' stroke-width='2' marker-start='url(#hollow)'/>
+    <text x='88' y='598' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>tutar (birleşim)</text>
+    <path d='M34,616 L74,616' fill='none' stroke='#F2D06B' stroke-width='2' stroke-dasharray='6 5' marker-end='url(#arrow)'/>
+    <text x='88' y='620' font-family="Georgia, 'Palatino Linotype', serif" font-size='12' font-style='italic' fill='#F6E7C1'>kullanır / üretir / çizer</text>
+  </g>
+</svg>
