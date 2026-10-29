@@ -1,0 +1,43 @@
+<UserControl x:Class="ZipfLaw.Wpf.Controls.Candle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="34" Height="96" IsHitTestVisible="False">
+    <!-- A floating candle of the Great Hall: the whole candle bobs (Candle.xaml.cs), the flame flickers (below). -->
+    <UserControl.RenderTransform>
+        <TranslateTransform x:Name="Bob" />
+    </UserControl.RenderTransform>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="Flame" Storyboard.TargetProperty="Opacity"
+                                     From="0.75" To="1" Duration="0:0:0.35" AutoReverse="True" RepeatBehavior="Forever" />
+                    <DoubleAnimation Storyboard.TargetName="FlameScale" Storyboard.TargetProperty="ScaleY"
+                                     From="0.9" To="1.12" Duration="0:0:0.5" AutoReverse="True" RepeatBehavior="Forever" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <!-- wax -->
+        <Rectangle Width="16" Height="52" VerticalAlignment="Bottom" RadiusX="2" RadiusY="2" Fill="#F4EBD0" />
+        <Ellipse Width="16" Height="7" VerticalAlignment="Bottom" Margin="0,0,0,45" Fill="#E3D6B0" />
+        <!-- flame -->
+        <Ellipse x:Name="Flame" Width="22" Height="40" VerticalAlignment="Top" Margin="0,8,0,0"
+                 RenderTransformOrigin="0.5,1">
+            <Ellipse.RenderTransform>
+                <ScaleTransform x:Name="FlameScale" />
+            </Ellipse.RenderTransform>
+            <Ellipse.Fill>
+                <RadialGradientBrush GradientOrigin="0.5,0.7" Center="0.5,0.65" RadiusX="0.5" RadiusY="0.55">
+                    <GradientStop Color="#FFFFFFE0" Offset="0" />
+                    <GradientStop Color="#FFFFC83D" Offset="0.45" />
+                    <GradientStop Color="#00FF8A00" Offset="1" />
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+            <Ellipse.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="26" Color="#FFC83D" Opacity="0.9" />
+            </Ellipse.Effect>
+        </Ellipse>
+    </Grid>
+</UserControl>
