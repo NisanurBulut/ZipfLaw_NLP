@@ -80,7 +80,6 @@ void SelectTab(string name)
 void ChooseBook(string title)
 {
     var books = window.FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ComboBox))[0];
-    Console.WriteLine("combo: " + books.Current.Name + " / " + string.Join(",", books.GetSupportedPatterns().Select(p => p.ProgrammaticName)));
     var expand = (ExpandCollapsePattern)books.GetCurrentPattern(ExpandCollapsePattern.Pattern);
     expand.Expand();
     Thread.Sleep(300);
@@ -89,8 +88,7 @@ void ChooseBook(string title)
     var item = AutomationElement.RootElement
         .FindAll(TreeScope.Descendants, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.ListItem))
         .Cast<AutomationElement>()
-        .First(candidate => candidate.Current.Name.Contains(title));
-    Console.WriteLine("item: " + item.Current.Name + " / " + string.Join(",", item.GetSupportedPatterns().Select(p => p.ProgrammaticName)));
+        .First(candidate => candidate.Current.Name.Contains(title) && candidate.TryGetCurrentPattern(SelectionItemPattern.Pattern, out _));
     ((SelectionItemPattern)item.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
     expand.Collapse();
 }
