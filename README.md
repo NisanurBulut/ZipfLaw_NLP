@@ -1,5 +1,18 @@
 # Zipf Kanunu
 
+## WPF Sürümü
+Uygulama, Harry Potter temalı (kızıl-altın renkler, süzülen mumlar, parlayan başlık, büyüyen çubuklar ve çizilen grafik) yeni bir WPF arayüzüne taşınmıştır. Metin seçilir, **Büyüyü Başlat** düğmesine basılır; sonuç üç sekmede görünür: **Özet** (toplam ve benzersiz kelime, `A = sıra × olasılık`, en sık 15 kelime), **Tablo** ve **Grafik** (logaritmik sıra–sayı grafiği ve Zipf doğrusu).
+
+```bash
+dotnet build ZipfLaw.sln
+dotnet test ZipfLaw.sln
+dotnet run --project src/ZipfLaw.Wpf
+```
+
+- `src/ZipfLaw.Core`: Zipf hesabı (paketsiz, arayüzsüz). `src/ZipfLaw.Wpf`: ekranlar. `tests/ZipfLaw.Core.Tests`: testler.
+- İlk sürümde Türkçe için kök ayrıştırma yoktur; kelimeler olduğu gibi sayılır. `A` değeri, README'deki formüle uygun olarak toplam kelime sayısına (N) bölünerek hesaplanır.
+- Eski WinForms projesi `ZipfLawNLP/` klasöründe olduğu gibi durmaktadır.
+
 ## Yıldız Ver! :star:
 Çözümünüzü öğrenmek veya başlatmak için bu projeyi beğendiyseniz veya kullanıyorsanız, lütfen ona bir yıldız verin. Teşekkürler!
 
